@@ -1,0 +1,45 @@
+﻿.navbar {
+    text-transform: uppercase;
+    font-size: 0.75em;
+}
+
+.loader .icon-spinner {
+    margin: 10px 10px 0 0;
+}
+
+.loader {
+    visibility: hidden;
+}
+
+    .loader.active {
+        visibility: visible;
+    }
+
+.splash-progress {
+    margin: 10% 50% 0 40%;
+    font-size: 10em;
+}
+
+.splash {
+    text-align: center;
+    margin: 10% 0 0 0;
+}
+
+    .splash .message {
+        font-size: 5em;
+        line-height: 1.5em;
+        -webkit-text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px;
+        text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px;
+        text-transform: uppercase;
+    }
+
+    .splash .icon-spinner {
+        text-align: center;
+        display: inline-block;
+        font-size: 10em;
+        margin-top: 50px;
+    }
+
+.navbar .nav > li > a.zoom {
+    padding: 10px 5px 0px;
+}

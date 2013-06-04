@@ -1,0 +1,63 @@
+﻿<!--<nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+        <a class="brand" href="#/home">
+            <span class="title">SPA Template</span>
+        </a>
+        <div class="btn-group" data-bind="foreach: router.visibleRoutes">
+            <a data-bind="css: { active: isActive }, attr: { href: hash }, text: name"
+                class="btn btn-info" href="#"></a>
+        </div>
+        <div class="loader pull-right" data-bind="css: { active: router.isNavigating }">
+            <i class="icon-spinner icon-large" data-bind="css: { 'icon-spin': router.isNavigating }"/>
+        </div>
+    </div>
+</nav>-->
+<nav class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <a class="brand" href="#/home">
+            <span class="page-title">&nbsp;SPA Template</span>
+        </a>
+
+        <div class="container-fluid">
+
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav" data-bind="foreach: routes">
+                    <li class="dropdown" data-bind="css: { active: isActive }">
+                        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                            <span data-bind="text: caption"></span><b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" data-bind="foreach: routes">
+                            <li role="presentation" data-bind="css: { active: isActive }">
+                                <a role="menuitem" href="#" data-bind="click: $root.navigateTo, text: name"></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="loader pull-right" data-bind="css: { active: router.isNavigating }">
+                <i class="icon-spinner icon-2x icon-spin"></i>
+            </div>
+
+            <ul class="nav pull-right">
+                <li>
+                    <a class="zoom" href="#" data-bind="click: zoomIn" title="zoom in"><i class="icon-zoom-in icon-white" title="zoom in" /></a>
+                </li>
+                <li>
+                    <a class="zoom" href="#" data-bind="click: zoomOut" title="zoom out"><i class="icon-zoom-out icon-white" title="zoom out" /></a>
+                </li>
+            </ul>
+
+            <form class="navbar-search pull-right" data-bind="submit: search">
+                <input type="text" class="search-query" placeholder="Search">
+            </form>
+
+        </div>
+    </div>
+</nav>
