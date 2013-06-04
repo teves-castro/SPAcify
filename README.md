@@ -3,8 +3,14 @@ Spacify
 
 ASP.NET MVC TypeScript SPA Template inspired by the HotTowel SPA Template.
 
-Notes
-=====
+## NuGet Package ##
+This template is also available in nuget form:
+
+	Install-Package Spacify
+
+https://nuget.org/packages/Spacify/
+
+## Notes ##
 
 A core Durandal file (viewModelBinder.js) was modified to allow a better integration with typescript.
 This change is temporary until there's a better support for typescript in Durandal (eagerly waiting for V2).
