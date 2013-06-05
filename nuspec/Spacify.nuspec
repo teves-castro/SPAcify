@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>Spacify</id>
-    <version>1.0.0</version>
-    <title>Spacify: ASP.NET MVC TypeScript SPA Template</title>
+    <id>SPAcify</id>
+    <version>1.0.1</version>
+    <title>SPAcify: ASP.NET MVC TypeScript SPA Template</title>
     <authors>Vítor Castro</authors>
     <owners>Vítor Castro</owners>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Template for building a SPA with ASP.NET MVC, TypeScript, Knockout, Durandal, and Breeze.</description>
     <summary>Template for building a SPA with ASP.NET MVC, TypeScript, Knockout, Durandal, and Breeze.</summary>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>Small tweaks to code and package notes</releaseNotes>
     <copyright>Copyright © 2013 Vítor Castro</copyright>
     <language>en-US</language>
-    <tags>spa asp.net jquery knockout toastr breeze sammy q javascript moment typescript</tags>
+    <tags>typescript spa mvc asp.net jquery durandal knockout toastr breeze sammy q javascript moment</tags>
     <dependencies>
       <dependency id="bootstrap.TypeScript.DefinitelyTyped" version="0.0.3" />
       <dependency id="breeze.TypeScript.DefinitelyTyped" version="0.0.6" />

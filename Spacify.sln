@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5A754F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspec", "nuspec", "{6B9AC8DC-8779-4B81-98FB-1562FD0739FF}"
 	ProjectSection(SolutionItems) = preProject
-		nuspec\Spacify.nuspec = nuspec\Spacify.nuspec
+		nuspec\SPAcify.nuspec = nuspec\SPAcify.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spacify", "Spacify\Spacify.csproj", "{F8964097-7A25-469D-9615-02D05F0BC4D3}"

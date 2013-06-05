@@ -3,7 +3,6 @@
 import app = module('durandal/app');
 import system = module('durandal/system');
 import r = module('durandal/plugins/router');
-//import logger = module('../services/logger');
 
 export interface IRouteInfoParameters extends r.IRouteInfoParameters {
     hash?: string;

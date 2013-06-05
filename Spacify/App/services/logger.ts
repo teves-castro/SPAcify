@@ -2,6 +2,10 @@
 /// <reference path="../../Scripts/typings/toastr/toastr.d.ts" />
 import system = module("durandal/system");
 
+export function info(message) {
+    logIt(message, null, null, true, 'info');
+}
+
 export function log(message, data, source, showToast) {
     logIt(message, data, source, showToast, 'info');
 }

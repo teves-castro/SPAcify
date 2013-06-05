@@ -11,8 +11,6 @@ export function activate(activationData) {
 class HomeViewModel extends ViewModels.ViewModelBase {
     title = ko.observable("Home view");
 
-    class1: KnockoutObservableClass1;
-
     activate(activationData) {
         return super.activate(activationData);
     }
