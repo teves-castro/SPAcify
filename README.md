@@ -1,7 +1,7 @@
 Spacify
 =======
 
-ASP.NET MVC TypeScript SPA Template inspired by the HotTowel SPA Template.
+ASP.NET MVC TypeScript SPA starter kit inspired by the HotTowel SPA Template.
 
 ## NuGet Package ##
 This template is also available in nuget form:
