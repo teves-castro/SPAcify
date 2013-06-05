@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>SPAcify</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>SPAcify: ASP.NET MVC TypeScript SPA Template</title>
     <authors>Vítor Castro</authors>
     <owners>Vítor Castro</owners>
@@ -17,7 +17,7 @@
     <dependencies>
       <dependency id="bootstrap.TypeScript.DefinitelyTyped" version="0.0.3" />
       <dependency id="breeze.TypeScript.DefinitelyTyped" version="0.0.6" />
-      <dependency id="Breeze.WebApi" version="1.3.4" />
+      <dependency id="Breeze.WebApi" version="1.3.5" />
       <dependency id="Durandal" version="1.2.0" />
       <dependency id="Durandal.Router" version="1.2.0" />
       <dependency id="Durandal.Transitions" version="1.2.0" />
@@ -34,7 +34,7 @@
       <dependency id="moment.TypeScript.DefinitelyTyped" version="0.0.2" />
       <dependency id="Q" version="0.9.4" />
       <dependency id="q.TypeScript.DefinitelyTyped" version="0.0.9" />
-      <dependency id="toastr" version="1.3.0" />
+      <dependency id="toastr" version="1.3.1" />
       <dependency id="toastr.TypeScript.DefinitelyTyped" version="0.0.5" />
       <dependency id="Twitter.Bootstrap" version="2.3.2" />
       <dependency id="WebActivator" version="1.5.3" />
