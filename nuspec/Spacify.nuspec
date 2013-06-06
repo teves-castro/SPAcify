@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>SPAcify</id>
-    <version>1.0.2</version>
+    <version>1.1.0</version>
     <title>SPAcify: ASP.NET MVC TypeScript SPA Template</title>
     <authors>Vítor Castro</authors>
     <owners>Vítor Castro</owners>
@@ -49,10 +49,10 @@
     <file src="..\Spacify\App\main.js" target="content\App\main.js" />
     <file src="..\Spacify\App_Start\BundleConfig.cs.pp" target="content\App_Start\BundleConfig.cs.pp" />
     <file src="..\Spacify\App_Start\SpaConfig.cs.pp" target="content\App_Start\SpaConfig.cs.pp" />
-    <file src="..\Spacify\App_Start\SpaRouteConfig.cs.pp" target="content\App_Start\SpaRouteConfig.cs.pp" />
+    <file src="..\Spacify\App_Start\MvcRouteConfig.cs.pp" target="content\App_Start\MvcRouteConfig.cs.pp" />
     <file src="..\Spacify\Content\app.css" target="content\Content\app.css" />
-    <file src="..\Spacify\Controllers\SpaController.cs.pp" target="content\Controllers\SpaController.cs.pp" />
+    <file src="..\Spacify\Controllers\MvcController.cs.pp" target="content\Controllers\MvcController.cs.pp" />
     <file src="..\Spacify\Models\EntityBase.cs.pp" target="content\Models\EntityBase.cs.pp" />
-    <file src="..\Spacify\Views\Spa\**" target="content\Views\Spa" />
+    <file src="..\Spacify\Views\Mvc\**" target="content\Views\Spa" />
   </files>
 </package>

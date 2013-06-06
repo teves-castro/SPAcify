@@ -70,7 +70,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -85,6 +85,7 @@
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net45\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Spatial, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Spatial.5.5.0\lib\net40\System.Spatial.dll</HintPath>
@@ -115,6 +116,9 @@
     </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -168,19 +172,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpaConfig.tt</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\SpaRouteConfig.cs">
+    <Compile Include="App_Start\MvcRouteConfig.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpaRouteConfig.tt</DependentUpon>
+      <DependentUpon>MvcRouteConfig.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\SpaController.cs">
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\MvcController.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpaController.tt</DependentUpon>
+      <DependentUpon>MvcController.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306061633581_InitialCreate.cs" />
+    <Compile Include="Migrations\201306061633581_InitialCreate.Designer.cs">
+      <DependentUpon>201306061633581_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\BlogDbContext.cs" />
     <Compile Include="Models\EntityBase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -189,9 +203,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="App\durandal\amd\almond-custom.js" />
     <Content Include="App\durandal\amd\optimizer.exe" />
     <Content Include="App\durandal\amd\r.js" />
@@ -219,8 +230,105 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>entities.tt</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="App\models\routeGroup.ts" />
+    <TypeScriptCompile Include="App\models\modelBuilder.ts" />
+    <Content Include="App\models\modelBuilder.js">
+      <DependentUpon>modelBuilder.ts</DependentUpon>
+    </Content>
+    <Content Include="App\models\modelBuilder.min.js">
+      <DependentUpon>modelBuilder.ts</DependentUpon>
+    </Content>
+    <Content Include="App\models\routeGroup.js">
+      <DependentUpon>routeGroup.ts</DependentUpon>
+    </Content>
+    <Content Include="App\models\routeGroup.min.js">
+      <DependentUpon>routeGroup.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="App\viewmodels\login.ts" />
+    <TypeScriptCompile Include="App\services\account.ts" />
+    <Content Include="App\services\account.js">
+      <DependentUpon>account.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\account.min.js">
+      <DependentUpon>account.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="App\services\entityManagerProvider.ts" />
+    <Content Include="App\services\entityManagerProvider.js">
+      <DependentUpon>entityManagerProvider.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\entityManagerProvider.min.js">
+      <DependentUpon>entityManagerProvider.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="App\services\errorHandler.ts" />
+    <Content Include="App\services\errorHandler.js">
+      <DependentUpon>errorHandler.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="App\services\utilities.ts" />
+    <Content Include="App\services\errorHandler.min.js">
+      <DependentUpon>errorHandler.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="App\services\repository.ts" />
+    <Content Include="App\services\repository.js">
+      <DependentUpon>repository.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\repository.min.js">
+      <DependentUpon>repository.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="App\services\unitOfWork.ts" />
+    <Content Include="App\services\unitOfWork.js">
+      <DependentUpon>unitOfWork.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\unitOfWork.min.js">
+      <DependentUpon>unitOfWork.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\utilities.js">
+      <DependentUpon>utilities.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\utilities.min.js">
+      <DependentUpon>utilities.ts</DependentUpon>
+    </Content>
+    <Content Include="App\viewmodels\login.js">
+      <DependentUpon>login.ts</DependentUpon>
+    </Content>
+    <Content Include="App\viewmodels\login.min.js">
+      <DependentUpon>login.ts</DependentUpon>
+    </Content>
+    <Content Include="App\views\login.html" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Controllers\MvcController.cs.pp">
+      <DependentUpon>MvcController.tt</DependentUpon>
+    </Content>
+    <Content Include="App_Start\MvcRouteConfig.cs.pp">
+      <DependentUpon>MvcRouteConfig.tt</DependentUpon>
+    </Content>
+    <Content Include="App\models\routeGroup.js.map">
+      <DependentUpon>routeGroup.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\account.js.map">
+      <DependentUpon>account.ts</DependentUpon>
+    </Content>
+    <Content Include="App\viewmodels\login.js.map">
+      <DependentUpon>login.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\entityManagerProvider.js.map">
+      <DependentUpon>entityManagerProvider.ts</DependentUpon>
+    </Content>
+    <Content Include="App\models\modelBuilder.js.map">
+      <DependentUpon>modelBuilder.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\errorHandler.js.map">
+      <DependentUpon>errorHandler.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\utilities.js.map">
+      <DependentUpon>utilities.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\repository.js.map">
+      <DependentUpon>repository.ts</DependentUpon>
+    </Content>
+    <Content Include="App\services\unitOfWork.js.map">
+      <DependentUpon>unitOfWork.ts</DependentUpon>
+    </Content>
     <None Include="Scripts\breeze.intellisense.js" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Scripts\breeze.debug.js" />
@@ -317,12 +425,9 @@
     <Content Include="App_Start\BundleConfig.cs.pp">
       <DependentUpon>BundleConfig.tt</DependentUpon>
     </Content>
-    <Content Include="Controllers\SpaController.tt">
+    <Content Include="Controllers\MvcController.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SpaController.cs</LastGenOutput>
-    </Content>
-    <Content Include="Controllers\SpaController.cs.pp">
-      <DependentUpon>SpaController.tt</DependentUpon>
+      <LastGenOutput>MvcController.cs</LastGenOutput>
     </Content>
     <Content Include="Models\EntityBase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -335,12 +440,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>entities.d.ts</LastGenOutput>
     </Content>
-    <Content Include="App_Start\SpaRouteConfig.tt">
+    <Content Include="App_Start\MvcRouteConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SpaRouteConfig.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_Start\SpaRouteConfig.cs.pp">
-      <DependentUpon>SpaRouteConfig.tt</DependentUpon>
+      <LastGenOutput>MvcRouteConfig.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -377,8 +479,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Spa\index.cshtml" />
-    <Content Include="Views\Spa\_splash.cshtml" />
+    <Content Include="Views\Mvc\index.cshtml" />
+    <Content Include="Views\Mvc\_splash.cshtml" />
     <Content Include="Scripts\jquery-2.0.1.min.map" />
   </ItemGroup>
   <ItemGroup>
@@ -389,6 +491,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201306061633581_InitialCreate.resx">
+      <DependentUpon>201306061633581_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

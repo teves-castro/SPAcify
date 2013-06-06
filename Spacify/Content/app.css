@@ -43,3 +43,16 @@
 .navbar .nav > li > a.zoom {
     padding: 10px 5px 0px;
 }
+
+.login {
+    /*float: right;*/
+    margin: 5% 0 0 0;
+}
+
+.remember {
+    position: absolute;
+    display: block;
+    margin: 0;
+    /*font-size: 11px;
+    line-height: 30px;   */ 
+}

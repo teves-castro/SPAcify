@@ -1,5 +1,8 @@
 ﻿<section>
     <h2 class="page-title" data-bind="text: title"></h2>
-    
-    <span data-bind="text:class1.Id"></span>
+    <ul data-bind="foreach: blogs">
+        <li>
+            <span data-bind="text: name"></span>
+        </li>
+    </ul>
 </section>

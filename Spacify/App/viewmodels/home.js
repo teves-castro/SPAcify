@@ -3,8 +3,10 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-define(["require", "exports", "viewmodels/viewModelBase"], function(require, exports, __ViewModels__) {
+define(["require", "exports", "viewmodels/viewModelBase", "services/unitOfWork"], function(require, exports, __ViewModels__, __UnitOfWork__) {
     var ViewModels = __ViewModels__;
+
+    var UnitOfWork = __UnitOfWork__;
 
     function activate(activationData) {
         return exports.viewModel().activate(activationData);
@@ -13,9 +15,14 @@ define(["require", "exports", "viewmodels/viewModelBase"], function(require, exp
     var HomeViewModel = (function (_super) {
         __extends(HomeViewModel, _super);
         function HomeViewModel() {
-            _super.apply(this, arguments);
-
+            var _this = this;
+                _super.call(this);
             this.title = ko.observable("Home view");
+            this.uow = UnitOfWork.create();
+            this.blogs = ko.observableArray();
+            this.uow.blogs.all().then(function (blogs) {
+                _this.blogs(blogs);
+            });
         }
         HomeViewModel.prototype.activate = function (activationData) {
             return _super.prototype.activate.call(this, activationData);

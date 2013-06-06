@@ -37,13 +37,13 @@ interface KnockoutObservableStatic {
     (value: EntityBase): KnockoutObservableEntityBase;
     new (value: EntityBase): KnockoutObservableEntityBase;
 }
-<#= TypeScriptConverter.GenerateTypeScriptDeclarations() #>
+<#= TypeScriptConverter.GenerateTypeScriptDeclarations(true) #>
 
 <#+
 
 	public static class TypeScriptConverter
     {
-        public static string GenerateTypeScriptDeclarations()
+        public static string GenerateTypeScriptDeclarations(bool useCamelCase)
         {
             var entityBaseType = typeof(EntityBase);
 
@@ -51,11 +51,11 @@ interface KnockoutObservableStatic {
             var builder = new StringBuilder();
 
             return entityTypes
-                .Aggregate(builder, (sb, t) => sb.Append(GenerateTypeScriptDeclaration(t)))
+                .Aggregate(builder, (sb, t) => sb.Append(GenerateTypeScriptDeclaration(t, useCamelCase)))
                 .ToString();
         }
 
-        public static string GenerateTypeScriptDeclaration(Type modelType)
+        public static string GenerateTypeScriptDeclaration(Type modelType, bool useCamelCase)
         {
 
             var result = new StringBuilder();
@@ -83,9 +83,11 @@ interface KnockoutObservableStatic {
 
                 foreach (var property in declaredProperties)
                 {
+					var prop = useCamelCase ? property.Name.Substring(0,1).ToLower() + property.Name.Substring(1) : property.Name;
+
                     var name = Nullable.GetUnderlyingType(property.PropertyType) == null
-                        ? property.Name // not nullable
-                        : (property.Name + "?"); // nullable
+                        ? prop // not nullable
+                        : (prop + "?"); // nullable
 
                     var type = ConvertTypeName(property.PropertyType);
 

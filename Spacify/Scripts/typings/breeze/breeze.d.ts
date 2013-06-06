@@ -586,6 +586,7 @@ declare module breeze {
         isEmpty(): bool;
         registerEntityTypeCtor(entityTypeName: string, entityCtor: Function, initializationFn?: (entity: Entity) =>void ): void;
         trackUnmappedType(entityCtor: Function, interceptor?: Function);
+        setEntityTypeForResourceName(resourceName: string, entityTypeOrName: string): void;
     }
 
     interface MetadataStoreOptions {
@@ -710,6 +711,7 @@ declare module breeze {
         property: IProperty;
         propertyName: string;
         validator: Validator;
+        entitiesWithErrors: Entity[];
 
         constructor (validator: Validator, context: any, errorMessage: string);
     }

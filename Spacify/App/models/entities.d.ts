@@ -26,5 +26,32 @@ interface KnockoutObservableStatic {
     (value: EntityBase): KnockoutObservableEntityBase;
     new (value: EntityBase): KnockoutObservableEntityBase;
 }
+interface Blog extends EntityBase {
+    id : KnockoutObservableString;
+    name : KnockoutObservableString;
+}
+
+interface KnockoutObservableBlog extends KnockoutObservableEntity {
+    (): Blog;
+    (value: Blog): void;
+
+    subscribe(callback: (newValue: Blog) => void , target?: any, topic?: string): KnockoutSubscription;
+    notifySubscribers(valueToWrite: Blog, topic?: string);
+}
+
+interface KnockoutObservableBlogArray extends KnockoutObservableEntityArray {
+    (): Blog[];
+    (value: Blog[]): void;
+
+    subscribe(callback: (newValue: Blog[]) => void , target?: any, topic?: string): KnockoutSubscription;
+    notifySubscribers(valueToWrite: Blog[], topic?: string);
+}
+
+interface KnockoutObservableStatic {
+    (value: Blog): KnockoutObservableBlog;
+    new (value: Blog): KnockoutObservableBlog;
+}
+
+
 
 

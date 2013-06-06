@@ -1,44 +1,20 @@
-define(["require", "exports", 'durandal/app', 'durandal/plugins/router'], function(require, exports, __app__, __r__) {
+define(["require", "exports", "durandal/app", "durandal/plugins/router", "models/routeGroup", "models/modelBuilder", "services/entityManagerProvider", "services/errorHandler", "services/account"], function(require, exports, __app__, __r__, __rg__, __modelBuilder__, __entityManagerProvider__, __errorHandler__, __account__) {
     var app = __app__;
 
     
     var r = __r__;
 
-    var RouteGroup = (function () {
-        function RouteGroup(caption, routes, routeGroups) {
-            if (typeof caption === "undefined") { caption = ""; }
-            this.caption = caption;
-            this.routes = routes;
-            this.routeGroups = routeGroups;
-            routes = routes || [];
-            routeGroups = routeGroups || [];
-            routes.forEach(function (r) {
-                if(r.hash === undefined) {
-                    r.hash = "#/" + r.url;
-                }
-            });
-            this.isActive = ko.computed(function () {
-                var activeRoute = exports.router.activeRoute();
-                if(activeRoute == undefined) {
-                    return false;
-                }
-                return routes.some(function (r) {
-                    return r.hash === activeRoute.hash;
-                }) || routeGroups.some(function (rg) {
-                    return rg.isActive();
-                });
-            });
-            this.visible = ko.computed(function () {
-                return routes.some(function (r) {
-                    return r.visible;
-                }) || routeGroups.some(function (rg) {
-                    return rg.visible();
-                });
-            });
-        }
-        return RouteGroup;
-    })();
-    exports.RouteGroup = RouteGroup;    
+    var rg = __rg__;
+
+    var modelBuilder = __modelBuilder__;
+
+    var entityManagerProvider = __entityManagerProvider__;
+
+    var errorHandler = __errorHandler__;
+
+    var account = __account__;
+
+    entityManagerProvider.modelBuilder = modelBuilder.extendMetadata;
     exports.router = r;
     exports.routes = ko.observableArray();
     function navigateTo(r) {
@@ -46,7 +22,15 @@ define(["require", "exports", 'durandal/app', 'durandal/plugins/router'], functi
     }
     exports.navigateTo = navigateTo;
     function activate() {
-        return boot();
+        errorHandler.includeIn(this);
+        return entityManagerProvider.prepare().then(bootProtected).fail(function (e) {
+            if(e.status === 401) {
+                return bootPublic();
+            } else {
+                errorHandler.handleError(e);
+                return false;
+            }
+        });
     }
     exports.activate = activate;
     var currentZoom = 1;
@@ -70,9 +54,14 @@ define(["require", "exports", 'durandal/app', 'durandal/plugins/router'], functi
         app.showMessage("Search not implemented...", "Search");
     }
     exports.search = search;
-    function boot() {
+    function logout() {
+        account.logoutUser();
+        window.location.href = "/SPAcify/";
+    }
+    exports.logout = logout;
+    function bootProtected() {
         exports.routes([
-            new RouteGroup("Home", [
+            new rg.RouteGroup("Home", [
                 {
                     url: "home",
                     name: "Home",
@@ -83,7 +72,7 @@ define(["require", "exports", 'durandal/app', 'durandal/plugins/router'], functi
                 }, 
                 
             ]), 
-            new RouteGroup("Details", [
+            new rg.RouteGroup("Details", [
                 {
                     url: "details",
                     name: "Details",
@@ -96,7 +85,7 @@ define(["require", "exports", 'durandal/app', 'durandal/plugins/router'], functi
             ]), 
             
         ]);
-        var allRoutes = new Array();
+        var allRoutes = [];
         exports.routes().forEach(function (rg) {
             return rg.routes.forEach(function (r) {
                 return allRoutes.push(r);
@@ -105,6 +94,10 @@ define(["require", "exports", 'durandal/app', 'durandal/plugins/router'], functi
         exports.router.map(allRoutes);
         toastr.info('SPA Template Loaded!');
         return exports.router.activate('home');
+    }
+    function bootPublic() {
+        exports.router.mapNav('login');
+        return exports.router.activate('login');
     }
 })
 //@ sourceMappingURL=shell.js.map
