@@ -1,6 +1,9 @@
 /// <reference path="../../Scripts/typings/breeze/breeze.d.ts" />
 /// <reference path="../../Scripts/typings/knockout/knockout.d.ts" />
-export function extendMetadata(metadataStore) {
+/// <reference path="../models/entities.d.ts" />
+
+export function extendMetadata(metadataStore: breeze.MetadataStore) {
+    extendBlog(metadataStore);
     extendStaffingResource(metadataStore);
     extendAddress(metadataStore);
     extendPhoneNumber(metadataStore);
@@ -9,8 +12,16 @@ export function extendMetadata(metadataStore) {
 private getUuid() {
     return (<any>breeze).core.getUuid();
 }
+private extendBlog(metadataStore: breeze.MetadataStore) {
+    var blogCtor = function () {
+        this.id = ko.observable(getUuid());
+    };
+    var blogInitializer = function (blog: Blog) {
+    };
+    metadataStore.registerEntityTypeCtor('Blog', blogCtor, blogInitializer);
+}
 
-private extendStaffingResource(metadataStore : breeze.MetadataStore) {
+private extendStaffingResource(metadataStore: breeze.MetadataStore) {
     var staffingResourceCtor = function () {
         this.id = ko.observable(getUuid());
     };

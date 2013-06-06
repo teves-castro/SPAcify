@@ -185,6 +185,9 @@
       <DependentUpon>MvcController.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ResourcesController.cs" />
+    <Compile Include="Data\EFRepository.cs" />
+    <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,6 +203,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Lookups.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

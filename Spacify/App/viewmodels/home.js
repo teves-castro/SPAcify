@@ -27,6 +27,25 @@ define(["require", "exports", "viewmodels/viewModelBase", "services/unitOfWork"]
         HomeViewModel.prototype.activate = function (activationData) {
             return _super.prototype.activate.call(this, activationData);
         };
+        HomeViewModel.prototype.refresh = function () {
+            var _this = this;
+            this.uow.blogs.all().then(function (blogs) {
+                _this.blogs(blogs);
+            });
+        };
+        HomeViewModel.prototype.addNew = function () {
+            var _this = this;
+            var blog = this.uow.blogs.add({
+                name: "Added blog"
+            });
+            this.uow.commit().then(function (data) {
+                return _this.refresh();
+            }).fail(toastr.error);
+        };
+        HomeViewModel.prototype.remove = function (blog) {
+            this.uow.blogs.remove(blog);
+            this.uow.commit().then(this.refresh).fail(toastr.error);
+        };
         return HomeViewModel;
     })(ViewModels.ViewModelBase);    
     exports.viewModel = ko.observable(new HomeViewModel());

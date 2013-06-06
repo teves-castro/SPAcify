@@ -1,4 +1,5 @@
 /// <reference path="../../Scripts/typings/breeze/breeze.d.ts" />
+/// <reference path="../models/entities.d.ts" />
 import emp = module("services/entityManagerProvider");
 
 export class Repository {
@@ -14,6 +15,7 @@ export class Repository {
             this.getMetastore().setEntityTypeForResourceName(resourceName, entityTypeName);
         }
     }
+
     withId(key) {
         if (!this.entityTypeName)
             throw new Error("Repository must be created with an entity type specified");
@@ -49,6 +51,15 @@ export class Repository {
         return this.executeQuery(query);
     };
 
+    add(config?: {}) {
+        return this.manager().createEntity(this.entityTypeName, config);
+    }
+
+    remove(entity: breeze.Entity) {
+        this.ensureEntityType(entity, this.entityTypeName);
+        entity.entityAspect.setDeleted();
+    }
+
     private executeQuery(query: breeze.EntityQuery) {
         return this.manager()
             .executeQuery(query.using(this.fetchStrategy || breeze.FetchStrategy.FromServer))
@@ -66,6 +77,13 @@ export class Repository {
     private manager() {
         return this.entityManagerProvider.manager();
     }
+
+    private ensureEntityType(obj: breeze.Entity, entityTypeName: string) {
+        if (!obj.entityType || obj.entityType.shortName !== entityTypeName) {
+            throw new Error('Object must be an entity of type ' + entityTypeName);
+        }
+    }
+
 }
 
 export function create(entityManagerProvider: emp.EntityManagerProvider, entityTypeName: string, resourceName?: string, fetchStrategy?: string) {

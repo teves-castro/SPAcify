@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using Breeze.WebApi;
 using Newtonsoft.Json.Linq;
+using Spacify.Data;
 using Spacify.Models;
 
 namespace Spacify.Controllers
@@ -12,28 +13,29 @@ namespace Spacify.Controllers
     [Authorize]
     public class ResourcesController : ApiController
     {
-        //private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
 
         // ~/breeze/resources/Lookups
         [HttpGet]
-        public LookupBundle Lookups()
+        public Lookups Lookups()
         {
-            return new LookupBundle
+            return new Lookups
             {
             };
         }
-
 
         // ~/breeze/resources/Blogs
         [HttpGet]
         public IQueryable<Blog> Blogs()
         {
-            var db = new BlogDbContext();
-            return db.Blogs;
+            return _unitOfWork.Blogs.GetAll();
         }
-    }
 
-    public class LookupBundle
-    {
+        [HttpPost]
+        public SaveResult SaveChanges(JObject saveBundle)
+        {
+            return _unitOfWork.SaveChanges(saveBundle);
+        }
+
     }
 }

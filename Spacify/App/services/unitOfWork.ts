@@ -10,7 +10,7 @@ export class UnitOfWork {
 
     constructor() {
         this.provider = emp.create();
-        this.blogs = repository.create(this.provider, null, 'resources/blogs');
+        this.blogs = repository.create(this.provider, "Blog", "resources/blogs");
 
         //this.staffingResourceListItems = repository.create(provider, null, 'resources/staffingresourcelistitems');
         //this.staffingResources = repository.create(provider, 'StaffingResource', 'resources/staffingresources');

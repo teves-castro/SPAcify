@@ -1,8 +1,9 @@
 ﻿<section>
     <h2 class="page-title" data-bind="text: title"></h2>
+    <a href="#" class="btn" data-bind="click: addNew">Add</a>
     <ul data-bind="foreach: blogs">
         <li>
-            <span data-bind="text: name"></span>
+            <span data-bind="text: name"></span><a class="btn" data-bind="click: $parent.remove">-</a>
         </li>
     </ul>
 </section>

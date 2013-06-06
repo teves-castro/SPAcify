@@ -38,6 +38,13 @@ define(["require", "exports"], function(require, exports) {
             var query = breeze.EntityQuery.from(this.resourceName);
             return this.executeQuery(query);
         };
+        Repository.prototype.add = function (config) {
+            return this.manager().createEntity(this.entityTypeName, config);
+        };
+        Repository.prototype.remove = function (entity) {
+            this.ensureEntityType(entity, this.entityTypeName);
+            entity.entityAspect.setDeleted();
+        };
         Repository.prototype.executeQuery = function (query) {
             return this.manager().executeQuery(query.using(this.fetchStrategy || breeze.FetchStrategy.FromServer)).then(function (data) {
                 return data.results;
@@ -51,6 +58,11 @@ define(["require", "exports"], function(require, exports) {
         };
         Repository.prototype.manager = function () {
             return this.entityManagerProvider.manager();
+        };
+        Repository.prototype.ensureEntityType = function (obj, entityTypeName) {
+            if(!obj.entityType || obj.entityType.shortName !== entityTypeName) {
+                throw new Error('Object must be an entity of type ' + entityTypeName);
+            }
         };
         return Repository;
     })();

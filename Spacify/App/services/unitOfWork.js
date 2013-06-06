@@ -10,7 +10,7 @@ define(["require", "exports", "services/entityManagerProvider", "services/reposi
     var UnitOfWork = (function () {
         function UnitOfWork() {
             this.provider = emp.create();
-            this.blogs = repository.create(this.provider, null, 'resources/blogs');
+            this.blogs = repository.create(this.provider, "Blog", "resources/blogs");
         }
         UnitOfWork.prototype.hasChanges = function () {
             return this.provider.manager().hasChanges();

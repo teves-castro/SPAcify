@@ -28,6 +28,24 @@ class HomeViewModel extends ViewModels.ViewModelBase {
     activate(activationData) {
         return super.activate(activationData);
     }
+
+    refresh() {
+        this.uow.blogs.all().then((blogs: Blog[]) => {
+            this.blogs(blogs);
+        });
+    }
+
+    addNew() {
+        var blog = <Blog>this.uow.blogs.add({ name: "Added blog" });
+        this.uow
+            .commit()
+            .then(data => this.refresh())
+            .fail(toastr.error);
+    }
+    remove(blog: Blog) {
+        this.uow.blogs.remove(blog);
+        this.uow.commit().then(this.refresh).fail(toastr.error);
+    }
 }
 
 export var viewModel = ko.observable(new HomeViewModel());
