@@ -1,11 +1,10 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace Spacify.Models
+namespace $rootnamespace$.Models
 {
     public class BlogDbContext : DbContext
     {
@@ -26,7 +25,3 @@ namespace Spacify.Models
         private class BlogDbInitializer : MigrateDatabaseToLatestVersion<BlogDbContext, Migrations.Configuration> { }
     }
 }
-// Generated helper templates
-// Generated items
-// Spacify\Spacify\Models\BlogDbContext.cs.pp
-

@@ -1,9 +1,8 @@
-
-using System.Web.Http;
+﻿using System.Web.Http;
 
 [assembly: WebActivator.PreApplicationStartMethod(
-    typeof(Spacify.App_Start.BreezeWebApiConfig), "RegisterBreezePreStart", Order = 1)]
-namespace Spacify.App_Start
+    typeof($rootnamespace$.App_Start.BreezeWebApiConfig), "RegisterBreezePreStart", Order = 1)]
+namespace $rootnamespace$.App_Start
 {
     ///<summary>
     /// Inserts the Breeze Web API controller route at the front of all Web API routes
@@ -29,7 +28,3 @@ namespace Spacify.App_Start
         }
     }
 }
-// Generated helper templates
-// Generated items
-// Spacify\Spacify\App_Start\BreezeWebApiConfig.cs.pp
-

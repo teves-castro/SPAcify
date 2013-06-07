@@ -1,9 +1,29 @@
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ include file="..\T4\TemplateFileManager.ttinclude" #>
+<#
+	var manager = TemplateFileManager.Create(this);
+	GenerateBundle("Spacify");
+	var file = Path.GetFileNameWithoutExtension(Host.TemplateFile) + ".cs.pp";
+	manager.StartNewFile(file);
+	GenerateBundle("$rootnamespace$");
+	manager.Process();
+#>
 
+<#+
+private void GenerateBundle(string rootNamespace)
+{
+#>
 using System.Web.Http;
 
 [assembly: WebActivator.PreApplicationStartMethod(
-    typeof(Spacify.App_Start.BreezeWebApiConfig), "RegisterBreezePreStart", Order = 1)]
-namespace Spacify.App_Start
+    typeof(<#= rootNamespace #>.App_Start.BreezeWebApiConfig), "RegisterBreezePreStart", Order = 1)]
+namespace <#= rootNamespace #>.App_Start
 {
     ///<summary>
     /// Inserts the Breeze Web API controller route at the front of all Web API routes
@@ -29,7 +49,6 @@ namespace Spacify.App_Start
         }
     }
 }
-// Generated helper templates
-// Generated items
-// Spacify\Spacify\App_Start\BreezeWebApiConfig.cs.pp
-
+<#+
+}
+#>

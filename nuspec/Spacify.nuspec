@@ -16,7 +16,7 @@
     <tags>typescript spa mvc asp.net jquery durandal knockout toastr breeze sammy q javascript moment</tags>
     <dependencies>
       <dependency id="bootstrap.TypeScript.DefinitelyTyped" version="0.0.3" />
-      <dependency id="breeze.TypeScript.DefinitelyTyped" version="0.0.6" />
+      <dependency id="breeze.TypeScript.DefinitelyTyped" version="0.0.7" />
       <dependency id="Breeze.WebApi" version="1.3.5" />
       <dependency id="Durandal" version="1.2.0" />
       <dependency id="Durandal.Router" version="1.2.0" />
@@ -25,6 +25,8 @@
       <dependency id="FontAwesome" version="3.1.1" />
       <dependency id="jQuery" version="2.0.1.1" />
       <dependency id="jquery.TypeScript.DefinitelyTyped" version="0.1.3" />
+      <dependency id="Knockout.Mapping" version="2.4.0" />
+      <dependency id="knockout.mapping.TypeScript.DefinitelyTyped" version="0.0.3" />
       <dependency id="knockout.TypeScript.DefinitelyTyped" version="0.1.6" />
       <dependency id="knockoutjs" version="2.2.1" />
       <dependency id="Microsoft.AspNet.Razor" version="2.0.30506.0" />
@@ -42,17 +44,32 @@
   </metadata>
   <files>
     <file src="..\Spacify\App\durandal\viewModelBinder.js" target="content\App\durandal\viewModelBinder.js" />
+    
     <file src="..\Spacify\App\models\entities.tt.pp" target="content\App\models\entities.tt.pp" />
-    <file src="..\Spacify\App\viewmodels\**" target="content\App\viewmodels" />
+    <file src="..\Spacify\App\models\modelBuilder.ts" target="content\App\models\modelBuilder.ts" />
+    <file src="..\Spacify\App\models\routeGroup.ts" target="content\App\models\routeGroup.ts" />
+
     <file src="..\Spacify\App\services\**" target="content\App\services" />
+
+    <file src="..\Spacify\App\viewmodels\**" target="content\App\viewmodels" />
+    
     <file src="..\Spacify\App\views\**.html" target="content\App\views" />
+    
     <file src="..\Spacify\App\main.js" target="content\App\main.js" />
+
+    <file src="..\Spacify\App_Start\BreezeWebApiConfig.cs.pp" target="content\App_Start\BreezeWebApiConfig.cs.pp" />
     <file src="..\Spacify\App_Start\BundleConfig.cs.pp" target="content\App_Start\BundleConfig.cs.pp" />
-    <file src="..\Spacify\App_Start\SpaConfig.cs.pp" target="content\App_Start\SpaConfig.cs.pp" />
     <file src="..\Spacify\App_Start\MvcRouteConfig.cs.pp" target="content\App_Start\MvcRouteConfig.cs.pp" />
+    <file src="..\Spacify\App_Start\SpaConfig.cs.pp" target="content\App_Start\SpaConfig.cs.pp" />
+
     <file src="..\Spacify\Content\app.css" target="content\Content\app.css" />
-    <file src="..\Spacify\Controllers\MvcController.cs.pp" target="content\Controllers\MvcController.cs.pp" />
-    <file src="..\Spacify\Models\EntityBase.cs.pp" target="content\Models\EntityBase.cs.pp" />
+
+    <file src="..\Spacify\Controllers\*.pp" target="content\Controllers" />
+
+    <file src="..\Spacify\Data\*.pp" target="content\Data" />
+    
+    <file src="..\Spacify\Models\*.pp" target="content\Models" />
+
     <file src="..\Spacify\Views\Mvc\**" target="content\Views\Spa" />
   </files>
 </package>

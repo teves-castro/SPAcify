@@ -162,7 +162,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BreezeWebApiConfig.cs" />
+    <Content Include="App_Start\BreezeWebApiConfig.cs.pp">
+      <DependentUpon>BreezeWebApiConfig.tt</DependentUpon>
+    </Content>
+    <None Include="App_Start\BreezeWebApiConfig.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BreezeWebApiConfig.cs</LastGenOutput>
+    </None>
+    <Compile Include="App_Start\BreezeWebApiConfig.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BreezeWebApiConfig.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -178,17 +189,48 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MvcRouteConfig.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
+    <Content Include="Controllers\AccountController.cs.pp">
+      <DependentUpon>AccountController.tt</DependentUpon>
+    </Content>
+    <None Include="Controllers\AccountController.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AccountController.cs</LastGenOutput>
+    </None>
+    <Compile Include="Controllers\AccountController.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountController.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\DefaultController.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultController.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\MvcController.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MvcController.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\ResourcesController.cs" />
-    <Compile Include="Data\EFRepository.cs" />
-    <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Data\UnitOfWork.cs" />
+    <Compile Include="Controllers\ResourcesController.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourcesController.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EFRepository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\IRepository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UnitOfWork.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnitOfWork.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,14 +239,26 @@
       <DependentUpon>201306061633581_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Blog.cs" />
-    <Compile Include="Models\BlogDbContext.cs" />
+    <Compile Include="Models\Blog.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Blog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BlogDbContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BlogDbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EntityBase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Lookups.cs" />
+    <Compile Include="Models\Lookups.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lookups.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -333,6 +387,62 @@
     </Content>
     <Content Include="App\services\unitOfWork.js.map">
       <DependentUpon>unitOfWork.ts</DependentUpon>
+    </Content>
+    <Content Include="Controllers\DefaultController.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DefaultController.cs</LastGenOutput>
+    </Content>
+    <Content Include="Controllers\DefaultController.cs.pp">
+      <DependentUpon>DefaultController.tt</DependentUpon>
+    </Content>
+    <Content Include="Controllers\ResourcesController.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ResourcesController.cs</LastGenOutput>
+    </Content>
+    <Content Include="Controllers\ResourcesController.cs.pp">
+      <DependentUpon>ResourcesController.tt</DependentUpon>
+    </Content>
+    <Content Include="Data\EFRepository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EFRepository.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\EFRepository.cs.pp">
+      <DependentUpon>EFRepository.tt</DependentUpon>
+    </Content>
+    <Content Include="Data\IRepository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IRepository.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\IRepository.cs.pp">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Content>
+    <Content Include="Data\UnitOfWork.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UnitOfWork.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\UnitOfWork.cs.pp">
+      <DependentUpon>UnitOfWork.tt</DependentUpon>
+    </Content>
+    <Content Include="Models\Blog.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Blog.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Blog.cs.pp">
+      <DependentUpon>Blog.tt</DependentUpon>
+    </Content>
+    <Content Include="Models\BlogDbContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BlogDbContext.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BlogDbContext.cs.pp">
+      <DependentUpon>BlogDbContext.tt</DependentUpon>
+    </Content>
+    <Content Include="Models\Lookups.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Lookups.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Lookups.cs.pp">
+      <DependentUpon>Lookups.tt</DependentUpon>
     </Content>
     <None Include="Scripts\breeze.intellisense.js" />
     <Content Include="Content\toastr.min.css" />

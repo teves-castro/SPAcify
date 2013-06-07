@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -7,7 +6,7 @@ using System.Web.Providers.Entities;
 using Breeze.WebApi;
 using Spacify.Models;
 
-namespace Spacify.Data
+namespace $rootnamespace$.Data
 {
     public class UnitOfWork : EFContextProvider<BlogDbContext>
     {
@@ -76,7 +75,4 @@ namespace Spacify.Data
             ObjectContext.SaveChanges();
         }
     }
-}// Generated helper templates
-// Generated items
-// Spacify\Spacify\Data\UnitOfWork.cs.pp
-
+}

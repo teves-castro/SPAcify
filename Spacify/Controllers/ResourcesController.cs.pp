@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -8,7 +7,7 @@ using Newtonsoft.Json.Linq;
 using Spacify.Data;
 using Spacify.Models;
 
-namespace Spacify.Controllers
+namespace $rootnamespace$.Controllers
 {
     [BreezeController]
     [Authorize]
@@ -54,7 +53,4 @@ namespace Spacify.Controllers
             }
         }
     }
-}// Generated helper templates
-// Generated items
-// Spacify\Spacify\Controllers\ResourcesController.cs.pp
-
+}

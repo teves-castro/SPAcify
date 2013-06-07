@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace Spacify.Data
+namespace $rootnamespace$.Data
 {
     public class EFRepository<T> : IRepository<T> where T : class
     {
@@ -103,7 +102,4 @@ namespace Spacify.Data
             Context.Dispose();
         }
     }
-}// Generated helper templates
-// Generated items
-// Spacify\Spacify\Data\EFRepository.cs.pp
-
+}

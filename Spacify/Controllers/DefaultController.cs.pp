@@ -1,9 +1,8 @@
-﻿
-using System.Web.Http;
+﻿using System.Web.Http;
 using Breeze.WebApi;
 using Spacify.Models;
 
-namespace Spacify.Controllers
+namespace $rootnamespace$.Controllers
 {
     [BreezeController]
     [Authorize]
@@ -17,7 +16,4 @@ namespace Spacify.Controllers
             return new EFContextProvider<BlogDbContext>().Metadata();
         }
     }
-}// Generated helper templates
-// Generated items
-// Spacify\Spacify\Controllers\DefaultController.cs.pp
-
+}

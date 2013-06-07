@@ -1,5 +1,4 @@
-﻿
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Security;
 using System.Web;
@@ -7,7 +6,7 @@ using System.Web.Http;
 using System.Web.Security;
 using Newtonsoft.Json;
 
-namespace Spacify.Controllers
+namespace $rootnamespace$.Controllers
 {
     public class LoginModel
     {
@@ -58,7 +57,4 @@ namespace Spacify.Controllers
             Membership.CreateUser("Admin", "password");
         }
     }
-}// Generated helper templates
-// Generated items
-// Spacify\Spacify\Controllers\AccountController.cs.pp
-
+}

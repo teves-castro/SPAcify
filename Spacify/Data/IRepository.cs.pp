@@ -1,11 +1,10 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace Spacify.Data
+namespace $rootnamespace$.Data
 {
     public interface IRepository<T> : IDisposable where T : class
     {
@@ -29,7 +28,4 @@ namespace Spacify.Data
         void Save();
         //Task<int> SaveAsync();
     }
-}// Generated helper templates
-// Generated items
-// Spacify\Spacify\Data\IRepository.cs.pp
-
+}
