@@ -1,10 +1,11 @@
+/// <reference path="../../Scripts/typings/knockout.mapping/knockout.mapping.d.ts" />
 /// <reference path="../../Scripts/typings/breeze/breeze.d.ts" />
 /// <reference path="../models/entities.d.ts" />
 import emp = module("services/entityManagerProvider");
 
 export class Repository {
 
-    constructor(private entityManagerProvider: emp.EntityManagerProvider, private entityTypeName, private resourceName: string, private fetchStrategy: string) {
+    constructor(private entityManagerProvider: emp.EntityManagerProvider, private entityTypeName, private resourceName?: string, private fetchStrategy?: string) {
 
         // Ensure resourceName is registered
         var entityType;
@@ -51,13 +52,17 @@ export class Repository {
         return this.executeQuery(query);
     };
 
-    add(config?: {}) {
-        return this.manager().createEntity(this.entityTypeName, config);
+    add(config?: {}, state?: breeze.EntityStateSymbol) {
+        return this.manager().createEntity(this.entityTypeName, config, state);
     }
 
     remove(entity: breeze.Entity) {
         this.ensureEntityType(entity, this.entityTypeName);
         entity.entityAspect.setDeleted();
+    }
+
+    manager() {
+        return this.entityManagerProvider.manager();
     }
 
     private executeQuery(query: breeze.EntityQuery) {
@@ -74,18 +79,38 @@ export class Repository {
         return this.manager().metadataStore;
     }
 
-    private manager() {
-        return this.entityManagerProvider.manager();
-    }
-
     private ensureEntityType(obj: breeze.Entity, entityTypeName: string) {
         if (!obj.entityType || obj.entityType.shortName !== entityTypeName) {
             throw new Error('Object must be an entity of type ' + entityTypeName);
         }
     }
 
+    serializeEntity(obj) {
+        var seen = [];
+
+        return JSON.stringify(obj, (key, val) => {
+            if (typeof val == "object") {
+                if (seen.indexOf(val) >= 0)
+                    return;
+                seen.push(val);
+            }
+            return val;
+        });
+    }
 }
 
-export function create(entityManagerProvider: emp.EntityManagerProvider, entityTypeName: string, resourceName?: string, fetchStrategy?: string) {
-    return new Repository(entityManagerProvider, entityTypeName, resourceName, fetchStrategy);
+export class BlogRepository extends Repository {
+    constructor(private entityManagerProvider: emp.EntityManagerProvider, private fetchStrategy?: string) {
+        super(entityManagerProvider, "Blog", "resources/blogs", fetchStrategy);
+    }
+
+    createBlog(blog: Blog) {
+        var raw = super.manager().helper.unwrapInstance(blog, false);
+        return $.ajax("breeze/resources/CreateBlog", {
+            data: this.serializeEntity(raw),
+            dataType: "json",
+            type: "POST",
+            contentType: "application/json",
+        });
+    }
 }

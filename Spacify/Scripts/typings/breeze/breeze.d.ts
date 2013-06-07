@@ -360,6 +360,13 @@ declare module breeze {
         rejectChanges(): Entity[];
         saveChanges(entities?: Entity[], saveOptions?: SaveOptions, callback?: SaveChangesSuccessCallback, errorCallback?: SaveChangesErrorCallback): Promise;
         setProperties(config: EntityManagerProperties): void;
+
+        helper: {
+            unwrapInstance(structObj: Entity, isOData: bool): any;
+            unwrapOriginalValues(target: Entity, metadataStore: MetadataStore, isOData: bool): any;
+            unwrapChangedValues(target: Entity, metadataStore: MetadataStore, isOData: bool): any;
+            getEntityKeyFromRawEntity(rawEntity: any, entityType: EntityType, isClient: bool): EntityKey;
+        };
     }
 
     interface EntityManagerOptions {
@@ -587,7 +594,7 @@ declare module breeze {
         registerEntityTypeCtor(entityTypeName: string, entityCtor: Function, initializationFn?: (entity: Entity) =>void ): void;
         trackUnmappedType(entityCtor: Function, interceptor?: Function);
         setEntityTypeForResourceName(resourceName: string, entityTypeOrName: string): void;
-    }
+ }
 
     interface MetadataStoreOptions {
         namingConvention?: NamingConvention;

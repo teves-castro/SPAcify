@@ -34,8 +34,23 @@ namespace Spacify.Controllers
         [HttpPost]
         public SaveResult SaveChanges(JObject saveBundle)
         {
-            return _unitOfWork.SaveChanges(saveBundle);
+            var result = _unitOfWork.SaveChanges(saveBundle);
+            return result;
         }
 
+        [HttpPost]
+        public bool CreateBlog([FromBody]Blog blog)
+        {
+            try
+            {
+                _unitOfWork.Blogs.Add(blog);
+                _unitOfWork.Commit();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

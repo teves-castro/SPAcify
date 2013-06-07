@@ -69,5 +69,10 @@ namespace Spacify.Data
         {
             get { return GetDefaultRepository<Blog>(); }
         }
+
+        public void Commit()
+        {
+            ObjectContext.SaveChanges();
+        }
     }
 }

@@ -37,8 +37,8 @@ define(["require", "exports", "viewmodels/viewModelBase", "services/unitOfWork"]
             var _this = this;
             var blog = this.uow.blogs.add({
                 name: "Added blog"
-            });
-            this.uow.commit().then(function (data) {
+            }, breeze.EntityState.Detached);
+            this.uow.blogs.createBlog(blog).then(function () {
                 return _this.refresh();
             }).fail(toastr.error);
         };

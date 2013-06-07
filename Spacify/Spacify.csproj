@@ -337,8 +337,13 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="Scripts\breeze.debug.js" />
     <Content Include="Scripts\breeze.min.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\typings\breeze\breeze-1.0.d.ts" />
+    <Content Include="Scripts\typings\knockout.mapping\knockout.mapping.d.ts" />
+    <Content Include="Scripts\typings\q\q.module.d.ts" />
     <Content Include="T4\TemplateFileManager.ttinclude" />
     <TypeScriptCompile Include="App\services\logger.ts" />
     <Content Include="App\services\logger.js">
@@ -462,7 +467,6 @@
     <Content Include="Scripts\sammy-0.7.4.js" />
     <Content Include="Scripts\sammy-0.7.4.min.js" />
     <Content Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
-    <Content Include="Scripts\typings\breeze\breeze-1.0.d.ts" />
     <Content Include="Scripts\typings\breeze\breeze.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\breeze\breeze.knockout.d.ts" />
     <Content Include="Scripts\typings\durandal\durandal.d.ts" />
@@ -471,7 +475,6 @@
     <Content Include="Scripts\typings\knockout\knockout.d.ts" />
     <Content Include="Scripts\typings\moment\moment.d.ts" />
     <Content Include="Scripts\typings\q\Q.d.ts" />
-    <Content Include="Scripts\typings\q\q.module.d.ts" />
     <Content Include="Scripts\typings\sammyjs\sammyjs.d.ts" />
     <Content Include="Scripts\typings\toastr\toastr.d.ts" />
     <Content Include="Scripts\_references.js" />

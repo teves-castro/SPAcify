@@ -1,3 +1,8 @@
+var __extends = this.__extends || function (d, b) {
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
 define(["require", "exports"], function(require, exports) {
     
     var Repository = (function () {
@@ -38,12 +43,15 @@ define(["require", "exports"], function(require, exports) {
             var query = breeze.EntityQuery.from(this.resourceName);
             return this.executeQuery(query);
         };
-        Repository.prototype.add = function (config) {
-            return this.manager().createEntity(this.entityTypeName, config);
+        Repository.prototype.add = function (config, state) {
+            return this.manager().createEntity(this.entityTypeName, config, state);
         };
         Repository.prototype.remove = function (entity) {
             this.ensureEntityType(entity, this.entityTypeName);
             entity.entityAspect.setDeleted();
+        };
+        Repository.prototype.manager = function () {
+            return this.entityManagerProvider.manager();
         };
         Repository.prototype.executeQuery = function (query) {
             return this.manager().executeQuery(query.using(this.fetchStrategy || breeze.FetchStrategy.FromServer)).then(function (data) {
@@ -56,20 +64,44 @@ define(["require", "exports"], function(require, exports) {
         Repository.prototype.getMetastore = function () {
             return this.manager().metadataStore;
         };
-        Repository.prototype.manager = function () {
-            return this.entityManagerProvider.manager();
-        };
         Repository.prototype.ensureEntityType = function (obj, entityTypeName) {
             if(!obj.entityType || obj.entityType.shortName !== entityTypeName) {
                 throw new Error('Object must be an entity of type ' + entityTypeName);
             }
         };
+        Repository.prototype.serializeEntity = function (obj) {
+            var seen = [];
+            return JSON.stringify(obj, function (key, val) {
+                if(typeof val == "object") {
+                    if(seen.indexOf(val) >= 0) {
+                        return;
+                    }
+                    seen.push(val);
+                }
+                return val;
+            });
+        };
         return Repository;
     })();
     exports.Repository = Repository;    
-    function create(entityManagerProvider, entityTypeName, resourceName, fetchStrategy) {
-        return new Repository(entityManagerProvider, entityTypeName, resourceName, fetchStrategy);
-    }
-    exports.create = create;
+    var BlogRepository = (function (_super) {
+        __extends(BlogRepository, _super);
+        function BlogRepository(entityManagerProvider, fetchStrategy) {
+                _super.call(this, entityManagerProvider, "Blog", "resources/blogs", fetchStrategy);
+            this.entityManagerProvider = entityManagerProvider;
+            this.fetchStrategy = fetchStrategy;
+        }
+        BlogRepository.prototype.createBlog = function (blog) {
+            var raw = _super.prototype.manager.call(this).helper.unwrapInstance(blog, false);
+            return $.ajax("breeze/resources/CreateBlog", {
+                data: this.serializeEntity(raw),
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json"
+            });
+        };
+        return BlogRepository;
+    })(Repository);
+    exports.BlogRepository = BlogRepository;    
 })
 //@ sourceMappingURL=repository.js.map

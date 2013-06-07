@@ -36,11 +36,16 @@ class HomeViewModel extends ViewModels.ViewModelBase {
     }
 
     addNew() {
-        var blog = <Blog>this.uow.blogs.add({ name: "Added blog" });
-        this.uow
-            .commit()
-            .then(data => this.refresh())
+        var blog = <Blog>this.uow.blogs.add({ name: "Added blog" }, breeze.EntityState.Detached);
+        
+        this.uow.blogs.createBlog(blog)
+            .then(() => this.refresh())
             .fail(toastr.error);
+
+        //this.uow
+        //    .commit()
+        //    .then(data => this.refresh())
+        //    .fail(toastr.error);
     }
     remove(blog: Blog) {
         this.uow.blogs.remove(blog);

@@ -6,20 +6,11 @@ var refs = {};
 export class UnitOfWork {
 
     private provider: emp.EntityManagerProvider;
-    blogs: repository.Repository;
+    blogs: repository.BlogRepository;
 
     constructor() {
         this.provider = emp.create();
-        this.blogs = repository.create(this.provider, "Blog", "resources/blogs");
-
-        //this.staffingResourceListItems = repository.create(provider, null, 'resources/staffingresourcelistitems');
-        //this.staffingResources = repository.create(provider, 'StaffingResource', 'resources/staffingresources');
-        //this.addresses = repository.create(provider, 'Address', 'resources/addresses');
-        //this.addressTypes = repository.create(provider, 'AddressType', 'resources/addresstypes', breeze.FetchStrategy.FromLocalCache);
-        //this.phoneNumbers = repository.create(provider, 'PhoneNumber', 'resources/phonenumbers');
-        //this.phoneNumberTypes = repository.create(provider, 'PhoneNumberType', 'resources/phonenumbertypes', breeze.FetchStrategy.FromLocalCache);
-
-        //this.states = repository.create(provider, 'State', 'resources/s tates', breeze.FetchStrategy.FromLocalCache);
+        this.blogs = new repository.BlogRepository(this.provider);
     }
 
     hasChanges() {
