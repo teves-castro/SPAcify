@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 using Breeze.WebApi;
-using Spacify.Models;
+using $rootnamespace$.Models;
 
 namespace $rootnamespace$.Controllers
 {

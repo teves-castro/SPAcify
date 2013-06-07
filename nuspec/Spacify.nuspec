@@ -43,6 +43,8 @@
     </dependencies>
   </metadata>
   <files>
+    <!--<file src="..\nuspec\install.ps1" target="tools\install.ps1" />-->
+    
     <file src="..\Spacify\App\durandal\viewModelBinder.js" target="content\App\durandal\viewModelBinder.js" />
     
     <file src="..\Spacify\App\models\entities.tt.pp" target="content\App\models\entities.tt.pp" />

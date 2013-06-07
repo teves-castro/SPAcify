@@ -21,7 +21,7 @@ private void GenerateBundle(string rootNamespace)
 #>
 using System.Web.Http;
 using Breeze.WebApi;
-using Spacify.Models;
+using <#= rootNamespace #>.Models;
 
 namespace <#= rootNamespace #>.Controllers
 {

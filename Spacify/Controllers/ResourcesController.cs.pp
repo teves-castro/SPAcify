@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web.Http;
 using Breeze.WebApi;
 using Newtonsoft.Json.Linq;
-using Spacify.Data;
-using Spacify.Models;
+using $rootnamespace$.Data;
+using $rootnamespace$.Models;
 
 namespace $rootnamespace$.Controllers
 {
