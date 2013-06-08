@@ -1,3 +1,4 @@
+using Spacify.Data;
 using Spacify.Models;
 
 namespace Spacify.Migrations

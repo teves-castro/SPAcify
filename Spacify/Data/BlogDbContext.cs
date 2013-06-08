@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Spacify.Models;
 
-namespace Spacify.Models
+namespace Spacify.Data
 {
     public class BlogDbContext : DbContext
     {
@@ -13,7 +14,8 @@ namespace Spacify.Models
 
         static BlogDbContext()
         {
-            Database.SetInitializer(new BlogDbInitializer());
+            //TODO: uncomment the next line after building the project
+            //Database.SetInitializer(new BlogDbInitializer());
         }
 
         public BlogDbContext()
@@ -23,10 +25,11 @@ namespace Spacify.Models
             Configuration.LazyLoadingEnabled = false;
         }
 
-        private class BlogDbInitializer : MigrateDatabaseToLatestVersion<BlogDbContext, Migrations.Configuration> { }
+        //TODO: uncomment the next line after building the project
+        //private class BlogDbInitializer : MigrateDatabaseToLatestVersion<BlogDbContext, Migrations.Configuration> { }
     }
 }
 // Generated helper templates
 // Generated items
-// Spacify\Spacify\Models\BlogDbContext.cs.pp
+// Spacify\Spacify\Data\BlogDbContext.cs.pp
 

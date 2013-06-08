@@ -24,8 +24,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using <#= rootNamespace #>.Models;
 
-namespace <#= rootNamespace #>.Models
+namespace <#= rootNamespace #>.Data
 {
     public class BlogDbContext : DbContext
     {
@@ -33,7 +34,8 @@ namespace <#= rootNamespace #>.Models
 
         static BlogDbContext()
         {
-            Database.SetInitializer(new BlogDbInitializer());
+            //TODO: uncomment the next line after building the project
+            //Database.SetInitializer(new BlogDbInitializer());
         }
 
         public BlogDbContext()
@@ -43,7 +45,8 @@ namespace <#= rootNamespace #>.Models
             Configuration.LazyLoadingEnabled = false;
         }
 
-        private class BlogDbInitializer : MigrateDatabaseToLatestVersion<BlogDbContext, Migrations.Configuration> { }
+        //TODO: uncomment the next line after building the project
+        //private class BlogDbInitializer : MigrateDatabaseToLatestVersion<BlogDbContext, Migrations.Configuration> { }
     }
 }
 <#+

@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 using Breeze.WebApi;
-using $rootnamespace$.Models;
+using $rootnamespace$.Data;
 
 namespace $rootnamespace$.Controllers
 {

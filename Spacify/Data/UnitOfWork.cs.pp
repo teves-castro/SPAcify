@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Providers.Entities;
 using Breeze.WebApi;
-using Spacify.Models;
+using $rootnamespace$.Models;
 
 namespace $rootnamespace$.Data
 {

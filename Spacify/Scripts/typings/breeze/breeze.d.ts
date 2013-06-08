@@ -718,7 +718,6 @@ declare module breeze {
         property: IProperty;
         propertyName: string;
         validator: Validator;
-        entitiesWithErrors: Entity[];
 
         constructor (validator: Validator, context: any, errorMessage: string);
     }

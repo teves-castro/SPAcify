@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>SPAcify</id>
-    <version>1.1.0</version>
+    <version>1.1.3</version>
     <title>SPAcify: ASP.NET MVC TypeScript SPA Template</title>
     <authors>Vítor Castro</authors>
     <owners>Vítor Castro</owners>
@@ -29,6 +29,7 @@
       <dependency id="knockout.mapping.TypeScript.DefinitelyTyped" version="0.0.3" />
       <dependency id="knockout.TypeScript.DefinitelyTyped" version="0.1.6" />
       <dependency id="knockoutjs" version="2.2.1" />
+      <dependency id="Microsoft.AspNet.Providers" />
       <dependency id="Microsoft.AspNet.Razor" version="2.0.30506.0" />
       <dependency id="Microsoft.AspNet.Web.Optimization" version="1.0.0" />
       <dependency id="Microsoft.AspNet.WebApi" version="4.0.30506.0" />
@@ -40,6 +41,7 @@
       <dependency id="toastr.TypeScript.DefinitelyTyped" version="0.0.5" />
       <dependency id="Twitter.Bootstrap" version="2.3.2" />
       <dependency id="WebActivator" version="1.5.3" />
+      <dependency id="WebGrease" version="1.3.0" />
     </dependencies>
   </metadata>
   <files>
@@ -51,9 +53,9 @@
     <file src="..\Spacify\App\models\modelBuilder.ts" target="content\App\models\modelBuilder.ts" />
     <file src="..\Spacify\App\models\routeGroup.ts" target="content\App\models\routeGroup.ts" />
 
-    <file src="..\Spacify\App\services\**" target="content\App\services" />
+    <file src="..\Spacify\App\services\**.ts" target="content\App\services" />
 
-    <file src="..\Spacify\App\viewmodels\**" target="content\App\viewmodels" />
+    <file src="..\Spacify\App\viewmodels\**.ts" target="content\App\viewmodels" />
     
     <file src="..\Spacify\App\views\**.html" target="content\App\views" />
     
@@ -66,12 +68,15 @@
 
     <file src="..\Spacify\Content\app.css" target="content\Content\app.css" />
 
-    <file src="..\Spacify\Controllers\*.pp" target="content\Controllers" />
+    <file src="..\Spacify\Controllers\**.pp" target="content\Controllers" />
 
-    <file src="..\Spacify\Data\*.pp" target="content\Data" />
+    <file src="..\Spacify\Data\**.pp" target="content\Data" />
     
-    <file src="..\Spacify\Models\*.pp" target="content\Models" />
-
-    <file src="..\Spacify\Views\Mvc\**" target="content\Views\Spa" />
+    <file src="..\Spacify\Models\**.pp" target="content\Models" />
+    
+    <file src="..\Spacify\Scripts\typings\breeze\breeze.knockout.d.ts" target="content\Scripts\typings\breeze\breeze.knockout.d.ts" />  
+    <file src="..\Spacify\Scripts\typings\q\Q.d.ts" target="content\Scripts\typings\q\Q.d.ts" />  
+  
+    <file src="..\Spacify\Views\Mvc\**" target="content\Views\Mvc" />
   </files>
 </package>

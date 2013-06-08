@@ -244,7 +244,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Blog.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BlogDbContext.cs">
+    <Compile Include="Data\BlogDbContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BlogDbContext.tt</DependentUpon>
@@ -430,11 +430,11 @@
     <Content Include="Models\Blog.cs.pp">
       <DependentUpon>Blog.tt</DependentUpon>
     </Content>
-    <Content Include="Models\BlogDbContext.tt">
+    <Content Include="Data\BlogDbContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BlogDbContext.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\BlogDbContext.cs.pp">
+    <Content Include="Data\BlogDbContext.cs.pp">
       <DependentUpon>BlogDbContext.tt</DependentUpon>
     </Content>
     <Content Include="Models\Lookups.tt">
