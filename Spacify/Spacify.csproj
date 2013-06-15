@@ -260,6 +260,10 @@
       <DependentUpon>Lookups.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Scripts\jquery-2.0.2.intellisense.js" />
+    <Content Include="Scripts\jquery-2.0.2.js" />
+    <Content Include="Scripts\jquery-2.0.2.min.js" />
+    <Content Include="Scripts\jquery-2.0.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\durandal\amd\almond-custom.js" />
@@ -450,6 +454,8 @@
     <Content Include="Scripts\breeze.min.js" />
     <Content Include="Scripts\knockout.mapping-latest.debug.js" />
     <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\q.js" />
+    <Content Include="Scripts\q.min.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\typings\breeze\breeze-1.0.d.ts" />
@@ -566,15 +572,10 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-2.0.1.intellisense.js" />
-    <Content Include="Scripts\jquery-2.0.1.js" />
-    <Content Include="Scripts\jquery-2.0.1.min.js" />
     <Content Include="Scripts\knockout-2.2.1.debug.js" />
     <Content Include="Scripts\knockout-2.2.1.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
-    <Content Include="Scripts\q.js" />
-    <Content Include="Scripts\q.min.js" />
     <Content Include="Scripts\sammy-0.7.4.js" />
     <Content Include="Scripts\sammy-0.7.4.min.js" />
     <Content Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
@@ -599,7 +600,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Mvc\index.cshtml" />
     <Content Include="Views\Mvc\_splash.cshtml" />
-    <Content Include="Scripts\jquery-2.0.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
