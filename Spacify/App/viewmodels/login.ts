@@ -16,7 +16,7 @@ export function loginUser() {
 
     return account.loginUser(username(), password(), remember())
         .then(function () {
-            window.location.href = "/SPAcify/";
+            window.location.href = "/";
             return true;
         })
         .fail(error => {

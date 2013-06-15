@@ -12,7 +12,7 @@ define(["require", "exports", "services/account"], function(require, exports, __
             return Q.resolve(false);
         }
         return account.loginUser(exports.username(), exports.password(), exports.remember()).then(function () {
-            window.location.href = "/SPAcify/";
+            window.location.href = "/";
             return true;
         }).fail(function (error) {
             toastr.error(error);

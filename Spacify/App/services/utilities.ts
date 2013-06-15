@@ -7,7 +7,7 @@ export function getCurrentDate() {
 // of first entity that failed to save
 export function getSaveValidationErrorMessage(saveError: breeze.ValidationError) {
     try { // return the first entity's error message(s)
-        var firstEntity = saveError.entitiesWithErrors[0];
+        var firstEntity = (<any>saveError).entitiesWithErrors[0];
         return 'Validation Error: ' + getEntityValidationErrorMessage(firstEntity);
     } catch (e) { // ignore problem extracting error message 
         return "Save validation error";

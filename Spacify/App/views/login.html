@@ -1,15 +1,17 @@
 ﻿<div class="login text-center row-fluid">
     <div class="offset4 span3 well text-left">
-        <div class="row-fluid">
-            <input id="username" type="text" placeholder="username" data-bind="value: username" class="span12" />
-            <input id="password" type="password" placeholder="password" data-bind="value: password" class="span12" />
-        </div>
-        <div>
-            <label class="checkbox pull-left">
-                <input type="checkbox" data-bind="checked: remember">
-                Remember me
-            </label>
-            <button class="btn btn-primary pull-right" data-bind="click: loginUser"><i class="icon-signin" />&nbsp;Sign in</button>
-        </div>
+        <form>
+            <div class="row-fluid">
+                <input id="username" type="text" placeholder="username" data-bind="value: username" class="span12" />
+                <input id="password" type="password" placeholder="password" data-bind="value: password" class="span12" />
+            </div>
+            <div>
+                <label class="checkbox pull-left">
+                    <input type="checkbox" data-bind="checked: remember">
+                    Remember me
+                </label>
+                <button class="btn btn-primary pull-right" type="submit" data-bind="click: loginUser"><i class="icon-signin" />&nbsp;Sign in</button>
+            </div>
+        </form>
     </div>
 </div>

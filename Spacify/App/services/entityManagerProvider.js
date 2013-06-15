@@ -2,7 +2,7 @@ define(["require", "exports", "durandal/app"], function(require, exports, __app_
     var app = __app__;
 
     breeze.NamingConvention.camelCase.setAsDefault();
-    var serviceName = '/Spacify/breeze';
+    var serviceName = '/breeze';
     var masterManager = new breeze.EntityManager(serviceName);
     var EntityManagerProvider = (function () {
         function EntityManagerProvider() { }

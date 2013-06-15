@@ -56,7 +56,7 @@ define(["require", "exports", "durandal/app", "durandal/plugins/router", "models
     exports.search = search;
     function logout() {
         account.logoutUser();
-        window.location.href = "/SPAcify/";
+        window.location.href = "/";
     }
     exports.logout = logout;
     function bootProtected() {

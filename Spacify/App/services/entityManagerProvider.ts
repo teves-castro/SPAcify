@@ -3,7 +3,7 @@
 import app = module("durandal/app");
 
 breeze.NamingConvention.camelCase.setAsDefault();
-var serviceName = '/Spacify/breeze';
+var serviceName = '/breeze';
 var masterManager = new breeze.EntityManager(serviceName);
 
 export class EntityManagerProvider {

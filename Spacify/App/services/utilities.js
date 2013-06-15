@@ -5,7 +5,7 @@ define(["require", "exports"], function(require, exports) {
     exports.getCurrentDate = getCurrentDate;
     function getSaveValidationErrorMessage(saveError) {
         try  {
-            var firstEntity = saveError.entitiesWithErrors[0];
+            var firstEntity = (saveError).entitiesWithErrors[0];
             return 'Validation Error: ' + getEntityValidationErrorMessage(firstEntity);
         } catch (e) {
             return "Save validation error";

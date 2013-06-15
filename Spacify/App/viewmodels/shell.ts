@@ -57,7 +57,7 @@ export function search(text: string) {
 
 export function logout() {
     account.logoutUser();
-    window.location.href = "/SPAcify/";
+    window.location.href = "/";
 }
 
 //#region Internal Methods
