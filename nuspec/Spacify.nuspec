@@ -3,7 +3,7 @@
   <metadata>
     <id>SPAcify</id>
     <version>1.1.7</version>
-    <title>SPAcify: ASP.NET MVC TypeScript SPA Template</title>
+    <title>SPAcify: ASP.NET MVC TypeScript SPA starter kit</title>
     <authors>Vítor Castro</authors>
     <owners>Vítor Castro</owners>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
