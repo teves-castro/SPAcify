@@ -1,7 +1,7 @@
 ﻿<#@ template debug = "false" hostspecific = "false" language = "C#v5" #>
-<#@ assembly name = "$(ProjectDir)bin\$rootnamespace$.dll" #>
+<#@ assembly name = "$(ProjectDir)bin\Cpi.eConciliation.dll" #>
 <#@ assembly name = "System.Core.dll" #>
-<#@ import namespace = "$rootnamespace$.Models" #>
+<#@ import namespace = "Cpi.eConciliation.Models" #>
 <#@ import namespace = "System" #>
 <#@ import namespace = "System.Collections" #>
 <#@ import namespace = "System.Collections.Generic" #>
@@ -10,32 +10,10 @@
 <#@ import namespace = "System.Text" #>
 
 <#@ output extension = ".d.ts" #>
-///<reference path="../../Scripts/typings/breeze/breeze.Knockout.d.ts" />
 ///<reference path="../../Scripts/typings/knockout/knockout.d.ts" />
 ///<reference path="../../Scripts/typings/breeze/breeze.d.ts" />
 interface EntityBase extends breeze.Entity {
-	Selected: KnockoutObservableBool;
-}
-
-interface KnockoutObservableEntityBase extends KnockoutObservableEntity {
-    (): EntityBase;
-    (value: EntityBase): void;
-
-    subscribe(callback: (newValue: EntityBase) => void , target?: any, topic?: string): KnockoutSubscription;
-    notifySubscribers(valueToWrite: EntityBase, topic?: string);
-}
-
-interface KnockoutObservableEntityBaseArray extends KnockoutObservableEntityArray {
-    (): EntityBase[];
-    (value: EntityBase[]): void;
-
-    subscribe(callback: (newValue: EntityBase[]) => void , target?: any, topic?: string): KnockoutSubscription;
-    notifySubscribers(valueToWrite: EntityBase[], topic?: string);
-}
-
-interface KnockoutObservableStatic {
-    (value: EntityBase): KnockoutObservableEntityBase;
-    new (value: EntityBase): KnockoutObservableEntityBase;
+	selected: KnockoutObservable<boolean>;
 }
 <#= TypeScriptConverter.GenerateTypeScriptDeclarations(true) #>
 
@@ -102,29 +80,6 @@ interface KnockoutObservableStatic {
             result.Append("}");
             result.AppendLine();
 
-            result.AppendFormat(@"
-interface KnockoutObservable{0} extends KnockoutObservableEntity {{
-    (): {0};
-    (value: {0}): void;
-
-    subscribe(callback: (newValue: {0}) => void , target?: any, topic?: string): KnockoutSubscription;
-    notifySubscribers(valueToWrite: {0}, topic?: string);
-}}
-
-interface KnockoutObservable{0}Array extends KnockoutObservableEntityArray {{
-    (): {0}[];
-    (value: {0}[]): void;
-
-    subscribe(callback: (newValue: {0}[]) => void , target?: any, topic?: string): KnockoutSubscription;
-    notifySubscribers(valueToWrite: {0}[], topic?: string);
-}}
-
-interface KnockoutObservableStatic {{
-    (value: {0}): KnockoutObservable{0};
-    new (value: {0}): KnockoutObservable{0};
-}}
-", modelType.Name);
-            result.AppendLine();
             result.AppendLine();
 
             //return Tuple.Create(GetReferencedTypes(modelType), result.ToString());
@@ -144,25 +99,25 @@ interface KnockoutObservableStatic {{
                     || (nullableUnderlyingType != null
                         && nullableUnderlyingType.IsEnum))
                 {
-                    return "KnockoutObservableNumber";
+                    return "KnockoutObservable<number>";
                 }
 
                 var typeMappings = new Dictionary<string, string>
                 {
-                    { "System.Guid", "KnockoutObservableString" },
-                    { "System.Int16", "KnockoutObservableNumber" },
-                    { "System.Int32", "KnockoutObservableNumber" },
-                    { "System.Int64", "KnockoutObservableNumber" },
-                    { "System.UInt16", "KnockoutObservableNumber" },
-                    { "System.UInt32", "KnockoutObservableNumber" },
-                    { "System.UInt64", "KnockoutObservableNumber" },
-                    { "System.Decimal", "KnockoutObservableNumber" },
-                    { "System.Single", "KnockoutObservableNumber" },
-                    { "System.Double", "KnockoutObservableNumber" },
-                    { "System.Char", "KnockoutObservableString" },
-                    { "System.String", "KnockoutObservableString" },
-                    { "System.Boolean", "KnockoutObservableBool" },
-                    { "System.DateTime", "KnockoutObservableDate" }
+                    { "System.Guid", "KnockoutObservable<string>" },
+                    { "System.Int16", "KnockoutObservable<number>" },
+                    { "System.Int32", "KnockoutObservable<number>" },
+                    { "System.Int64", "KnockoutObservable<number>" },
+                    { "System.UInt16", "KnockoutObservable<number>" },
+                    { "System.UInt32", "KnockoutObservable<number>" },
+                    { "System.UInt64", "KnockoutObservable<number>" },
+                    { "System.Decimal", "KnockoutObservable<number>" },
+                    { "System.Single", "KnockoutObservable<number>" },
+                    { "System.Double", "KnockoutObservable<number>" },
+                    { "System.Char", "KnockoutObservable<string>" },
+                    { "System.String", "KnockoutObservable<string>" },
+                    { "System.Boolean", "KnockoutObservable<boolean>" },
+                    { "System.DateTime", "KnockoutObservable<Date>" }
                 };
 
                 var underlyingTypeName = type.ToString();
@@ -185,11 +140,11 @@ interface KnockoutObservableStatic {{
             {
                 var elementType = type.GetGenericArguments().FirstOrDefault();
 
-                return string.Format("KnockoutObservable{0}Array", elementType.Name);
+                return string.Format("KnockoutObservableArray<{0}>", elementType.Name);
             }
 
             // Single relationship to another model
-            return string.Format("KnockoutObservable{0}", type.Name);
+            return string.Format("KnockoutObservable<{0}>", type.Name);
         }
 
         private static TypeFamily GetTypeFamily(Type type)

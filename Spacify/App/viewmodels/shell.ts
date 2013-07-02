@@ -1,33 +1,33 @@
 /// <reference path="../../Scripts/typings/toastr/toastr.d.ts" />
 /// <reference path="../../Scripts/typings/durandal/durandal.d.ts" />
-import app = module("durandal/app");
-import system = module("durandal/system");
-import r = module("durandal/plugins/router");
-import rg = module("models/routeGroup");
-import modelBuilder = module("models/modelBuilder");
-import entityManagerProvider = module("services/entityManagerProvider");
-import errorHandler = module("services/errorHandler");
-import account = module("services/account");
+import App = module("durandal/app");
+import System = module("durandal/system");
+import Router = module("durandal/plugins/router");
+import RouteGroup = module("models/routeGroup");
+import ModelBuilder = module("models/modelBuilder");
+import Provider = module("services/entityManagerProvider");
+import ErrorHandler = module("services/errorHandler");
+import Account = module("services/account");
 
-entityManagerProvider.modelBuilder = modelBuilder.extendMetadata;
+Provider.modelBuilder = ModelBuilder.extendMetadata;
 
-export var router = r;
+export var router = Router;
 export var routes = ko.observableArray();
-export function navigateTo(r: rg.IRouteInfoParameters) {
+export function navigateTo(r: RouteGroup.IRouteInfoParameters) {
     router.navigateTo(r.hash);
 }
 
 export function activate() {
-    errorHandler.includeIn(this);
+    ErrorHandler.includeIn(this);
 
-    return entityManagerProvider
+    return Provider
         .prepare()
         .then(bootProtected)
         .fail(function (e) {
             if (e.status === 401) {
                 return <any>bootPublic();
             } else {
-                errorHandler.handleError(e);
+                ErrorHandler.handleError(e);
                 return false;
             }
         });
@@ -52,28 +52,28 @@ export function zoomOut() {
 }
 
 export function search(text: string) {
-    app.showMessage("Search not implemented...", "Search");
+    App.showMessage("Search not implemented...", "Search");
 }
 
 export function logout() {
-    account.logoutUser();
+    Account.logoutUser();
     window.location.href = "/";
 }
 
 //#region Internal Methods
-private bootProtected() {
+function bootProtected() {
     routes([
-        new rg.RouteGroup("Home",
+        new RouteGroup.RouteGroup("Home",
             [
                 { url: "home", name: "Home", visible: true, settings: { admin: false } },
             ]),
-        new rg.RouteGroup("Details",
+        new RouteGroup.RouteGroup("Details",
             [
                 { url: "details", name: "Details", visible: true, settings: { admin: false } },
             ]),
     ]);
 
-    var allRoutes: rg.IRouteInfoParameters[] = [];
+    var allRoutes: RouteGroup.IRouteInfoParameters[] = [];
     routes().forEach(rg => rg.routes.forEach(r => allRoutes.push(r)));
     router.map(allRoutes);
 
@@ -81,7 +81,7 @@ private bootProtected() {
     return router.activate('home');
 }
 
-private bootPublic() {
+function bootPublic() {
     router.mapNav('login');
     return router.activate('login');
 }

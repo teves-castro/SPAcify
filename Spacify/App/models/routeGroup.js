@@ -1,7 +1,7 @@
-define(["require", "exports", 'durandal/plugins/router'], function(require, exports, __r__) {
+define(["require", "exports", 'durandal/plugins/router'], function(require, exports, __Router__) {
     
     
-    var r = __r__;
+    var Router = __Router__;
 
     var RouteGroup = (function () {
         function RouteGroup(caption, routes, routeGroups) {
@@ -11,22 +11,23 @@ define(["require", "exports", 'durandal/plugins/router'], function(require, expo
             this.routeGroups = routeGroups;
             routes = routes || [];
             routeGroups = routeGroups || [];
+
             routes.forEach(function (r) {
-                if(r.hash === undefined) {
+                if (r.hash === undefined)
                     r.hash = "#/" + r.url;
-                }
             });
+
             this.isActive = ko.computed(function () {
-                var activeRoute = r.activeRoute();
-                if(activeRoute == undefined) {
+                var activeRoute = Router.activeRoute();
+                if (activeRoute == undefined)
                     return false;
-                }
                 return routes.some(function (r) {
                     return r.hash === activeRoute.hash;
                 }) || routeGroups.some(function (rg) {
                     return rg.isActive();
                 });
             });
+
             this.visible = ko.computed(function () {
                 return routes.some(function (r) {
                     return r.visible;
@@ -37,6 +38,6 @@ define(["require", "exports", 'durandal/plugins/router'], function(require, expo
         }
         return RouteGroup;
     })();
-    exports.RouteGroup = RouteGroup;    
-})
+    exports.RouteGroup = RouteGroup;
+});
 //@ sourceMappingURL=routeGroup.js.map

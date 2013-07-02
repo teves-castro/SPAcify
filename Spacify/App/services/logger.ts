@@ -1,6 +1,6 @@
 /// <reference path="../../Scripts/typings/durandal/durandal.d.ts" />
 /// <reference path="../../Scripts/typings/toastr/toastr.d.ts" />
-import system = module("durandal/system");
+import System = module("durandal/system");
 
 export function info(message) {
     logIt(message, null, null, true, 'info');
@@ -14,12 +14,12 @@ export function logError(message, data, source, showToast) {
     logIt(message, data, source, showToast, 'error');
 }
 
-private logIt(message, data, source, showToast, toastType) {
+function logIt(message, data, source, showToast, toastType) {
     source = source ? '[' + source + '] ' : '';
     if (data) {
-        system.log(source, message, data);
+        System.log(source, message, data);
     } else {
-        system.log(source, message);
+        System.log(source, message);
     }
     if (showToast) {
         if (toastType === 'error') {

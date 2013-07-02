@@ -1,6 +1,6 @@
-import logger = module("services/logger");
-import system = module("durandal/system");
-import util = module("services/utilities");
+import Logger = module("services/logger");
+import System = module("durandal/system");
+import Util = module("services/utilities");
 
 export class ErrorHandler {
     private targetObject;
@@ -10,16 +10,16 @@ export class ErrorHandler {
 
     handleError(error) {
         if (error.message.match(/validation error/i)) {
-            error.message = util.getSaveValidationErrorMessage(error);
+            error.message = Util.getSaveValidationErrorMessage(error);
         }
 
-        logger.logError(error.message, null, system.getModuleId(this.targetObject), true);
+        Logger.logError(error.message, null, System.getModuleId(this.targetObject), true);
         throw error;
-    };
+    }
 
     log(message, showToast) {
-        logger.log(message, null, system.getModuleId(this.targetObject), showToast);
-    };
+        Logger.log(message, null, System.getModuleId(this.targetObject), showToast);
+    }
 
 }
 
@@ -30,14 +30,14 @@ export function includeIn(targetObject) {
 
 export function handleError(error) {
     if (error.message.match(/validation error/i)) {
-        error.message = util.getSaveValidationErrorMessage(error);
+        error.message = Util.getSaveValidationErrorMessage(error);
     }
 
-    logger.logError(error.message, null, system.getModuleId(this.targetObject), true);
+    Logger.logError(error.message, null, System.getModuleId(this.targetObject), true);
     throw error;
 };
 
-private log(message, showToast) {
-    logger.log(message, null, system.getModuleId(this.targetObject), showToast);
+function log(message, showToast) {
+    Logger.log(message, null, System.getModuleId(this.targetObject), showToast);
 };
 

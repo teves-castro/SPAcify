@@ -1,6 +1,6 @@
 /// <reference path="../../Scripts/typings/durandal/durandal.d.ts" />
 /// <reference path="../../Scripts/typings/breeze/breeze.d.ts" />
-import app = module("durandal/app");
+import App = module("durandal/app");
 
 breeze.NamingConvention.camelCase.setAsDefault();
 var serviceName = '/breeze';
@@ -17,7 +17,7 @@ export class EntityManagerProvider {
 
             // Subscribe to events
             this._manager.hasChangesChanged.subscribe(function (args) {
-                app.trigger('hasChanges');
+                App.trigger('hasChanges');
             });
         }
         return this._manager;

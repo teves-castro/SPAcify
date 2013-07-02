@@ -4,40 +4,37 @@
 import ViewModels = module("viewmodels/viewModelBase");
 import UnitOfWork = module("services/unitOfWork");
 
-export function activate(activationData) {
-    return viewModel().activate(activationData);
-}
-
 class HomeViewModel extends ViewModels.ViewModelBase {
 
     private uow: UnitOfWork.UnitOfWork;
 
     title = ko.observable("Home view");
 
-    blogs: KnockoutObservableBlogArray;
+    blogs: KnockoutObservableArray<Blog>;
 
     constructor() {
         super();
         this.uow = UnitOfWork.create();
         this.blogs = ko.observableArray();
-        this.uow.blogs.all().then((blogs: Blog[]) => {
-            this.blogs(blogs);
-        });
     }
 
     activate(activationData) {
         return super.activate(activationData);
     }
 
+    viewAttached() {
+        this.refresh();
+    }
+
     refresh() {
-        this.uow.blogs.all().then((blogs: Blog[]) => {
-            this.blogs(blogs);
+        this.uow.blogs.all().then(blogs => {
+            this.blogs(blogs.results);
         });
     }
 
     addNew() {
         var blog = <Blog>this.uow.blogs.add({ name: "Added blog" }, breeze.EntityState.Detached);
-        
+
         this.uow.blogs.createBlog(blog)
             .then(() => this.refresh())
             .fail(toastr.error);
@@ -53,4 +50,4 @@ class HomeViewModel extends ViewModels.ViewModelBase {
     }
 }
 
-export var viewModel = ko.observable(new HomeViewModel());
+export = HomeViewModel;

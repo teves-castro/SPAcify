@@ -3,16 +3,13 @@
 
 import ViewModels = module("viewmodels/viewModelBase");
 
-export function activate(activationData) {
-    return viewModel().activate(activationData);
-}
-
 class DetailsViewModel extends ViewModels.ViewModelBase {
     title = ko.observable("Details view");
 
     activate(activationData) {
+        alert("Hello world!");
         return super.activate(activationData);
     }
 }
 
-export var viewModel = ko.observable(new DetailsViewModel());
+export = DetailsViewModel;

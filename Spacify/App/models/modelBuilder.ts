@@ -6,14 +6,16 @@ export function extendMetadata(metadataStore: breeze.MetadataStore) {
     extendBlog(metadataStore);
 }
 
-private getUuid() {
+function getUuid() {
     return (<any>breeze).core.getUuid();
 }
-private extendBlog(metadataStore: breeze.MetadataStore) {
+function extendBlog(metadataStore: breeze.MetadataStore) {
     var blogCtor = function () {
         this.id = ko.observable(getUuid());
     };
+
     var blogInitializer = function (blog: Blog) {
     };
+
     metadataStore.registerEntityTypeCtor('Blog', blogCtor, blogInitializer);
 }

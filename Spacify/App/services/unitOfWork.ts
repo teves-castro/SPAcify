@@ -1,34 +1,36 @@
-import emp = module("services/entityManagerProvider");
-import repository = module("services/repository");
-import app = module("durandal/app");
+import Provider = require("services/entityManagerProvider");
+import Repository = require("services/repositories");
+import App = require("durandal/app");
+
 var refs = {};
 
 export class UnitOfWork {
 
-    private provider: emp.EntityManagerProvider;
-    blogs: repository.BlogRepository;
+    private provider: Provider.EntityManagerProvider;
+    blogs: Repository.BlogRepository;
 
     constructor() {
-        this.provider = emp.create();
-        this.blogs = new repository.BlogRepository(this.provider);
+        this.provider = Provider.create();
+        this.blogs = new Repository.BlogRepository(this.provider);
     }
 
     hasChanges() {
         return this.provider.manager().hasChanges();
-    };
+    }
 
-    commit() {
-        var saveOptions = new breeze.SaveOptions({ resourceName: 'resources/savechanges' });
+    commit(resource?: string) {
+        var saveOptions = new breeze.SaveOptions({ resourceName: resource || 'resources/savechanges' });
 
         return this.provider.manager().saveChanges(null, saveOptions)
-            .then(function (saveResult) {
-                app.trigger('saved', saveResult.entities);
+            .then(saveResult => {
+                App.trigger('saved', saveResult.entities);
+                return saveResult;
             });
-    };
+    }
 
     rollback() {
         this.provider.manager().rejectChanges();
-    };
+    }
 
 }
 
@@ -56,7 +58,7 @@ export class SmartReference {
         this._referenceCount = 0;
 
         clean();
-    };
+    }
 
     release = function () {
         this._referenceCount--;
@@ -70,7 +72,7 @@ export function create() {
     return new UnitOfWork();
 }
 
-export function get (key): SmartReference {
+export function get(key): SmartReference {
     if (!refs[key]) {
         refs[key] = new SmartReference();
     }
@@ -78,7 +80,7 @@ export function get (key): SmartReference {
     return refs[key];
 }
 
-private clean() {
+function clean() {
     for (var key in refs) {
         if (refs[key].referenceCount == 0) {
             delete refs[key];

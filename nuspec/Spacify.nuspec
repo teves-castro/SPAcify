@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>SPAcify</id>
-    <version>1.1.7</version>
+    <version>1.2.0</version>
     <title>SPAcify: ASP.NET MVC TypeScript SPA starter kit</title>
     <authors>Vítor Castro</authors>
     <owners>Vítor Castro</owners>

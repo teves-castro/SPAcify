@@ -1,17 +1,23 @@
 define(["require", "exports"], function(require, exports) {
+    /// <reference path="../../Scripts/typings/breeze/breeze.d.ts" />
     function getCurrentDate() {
         return new Date();
     }
     exports.getCurrentDate = getCurrentDate;
+
+    // Provisional version returns validation error messages
+    // of first entity that failed to save
     function getSaveValidationErrorMessage(saveError) {
         try  {
             var firstEntity = (saveError).entitiesWithErrors[0];
-            return 'Validation Error: ' + getEntityValidationErrorMessage(firstEntity);
+            return 'Validation Error: ' + exports.getEntityValidationErrorMessage(firstEntity);
         } catch (e) {
             return "Save validation error";
         }
     }
     exports.getSaveValidationErrorMessage = getSaveValidationErrorMessage;
+
+    // Return string of an entity's validation error messages
     function getEntityValidationErrorMessage(entity) {
         try  {
             var errs = entity.entityAspect.getValidationErrors();
@@ -24,5 +30,5 @@ define(["require", "exports"], function(require, exports) {
         }
     }
     exports.getEntityValidationErrorMessage = getEntityValidationErrorMessage;
-})
+});
 //@ sourceMappingURL=utilities.js.map

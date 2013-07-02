@@ -1,6 +1,6 @@
 /// <reference path="../../Scripts/typings/toastr/toastr.d.ts" />
 /// <reference path="../../Scripts/typings/knockout/knockout.d.ts" />
-import logger = module("../services/logger");
+import Logger = module("../services/logger");
 
 export class ViewModelBase {
     title = ko.observable();
@@ -15,7 +15,7 @@ export class ViewModelBase {
     }
 
     activate(activationData) {
-        logger.info(this.title() + " Activated");
+        Logger.info(this.title() + " Activated");
         return true;
     }
 }

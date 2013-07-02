@@ -1,17 +1,22 @@
-define(["require", "exports", "services/account"], function(require, exports, __account__) {
-    var account = __account__;
+define(["require", "exports", "services/account"], function(require, exports, __Account__) {
+    /// <reference path="../../Scripts/typings/toastr/toastr.d.ts" />
+    /// <reference path="../../Scripts/typings/q/Q.d.ts" />
+    /// <reference path="../../Scripts/typings/knockout/knockout.d.ts" />
+    var Account = __Account__;
 
     exports.username = ko.observable("");
     exports.password = ko.observable("");
     exports.remember = ko.observable(false);
+
     exports.isValid = ko.computed(function () {
         return exports.username() && exports.password();
     });
+
     function loginUser() {
-        if(!exports.isValid()) {
+        if (!exports.isValid())
             return Q.resolve(false);
-        }
-        return account.loginUser(exports.username(), exports.password(), exports.remember()).then(function () {
+
+        return Account.loginUser(exports.username(), exports.password(), exports.remember()).then(function () {
             window.location.href = "/";
             return true;
         }).fail(function (error) {
@@ -20,5 +25,5 @@ define(["require", "exports", "services/account"], function(require, exports, __
         });
     }
     exports.loginUser = loginUser;
-})
+});
 //@ sourceMappingURL=login.js.map
