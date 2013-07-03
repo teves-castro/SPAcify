@@ -10,35 +10,35 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Starter kit for building a SPA with ASP.NET MVC, TypeScript, Knockout, Durandal, and Breeze.</description>
     <summary>Starter kit for building a SPA with ASP.NET MVC, TypeScript, Knockout, Durandal, and Breeze.</summary>
-    <releaseNotes>Added sample code to show how to start doing stuff both on client and server side. Most of the code was ported from the Breeze TempHire sample application.</releaseNotes>
+    <releaseNotes>Converted to typescript v0.9. Added generic versions of some classes and methods.</releaseNotes>
     <copyright>Copyright © 2013 Vítor Castro</copyright>
     <language>en-US</language>
     <tags>typescript spa mvc asp.net jquery durandal knockout toastr breeze sammy q javascript moment temphire</tags>
     <dependencies>
       <dependency id="bootstrap.TypeScript.DefinitelyTyped" version="0.0.3" />
-      <dependency id="breeze.TypeScript.DefinitelyTyped" version="0.0.7" />
-      <dependency id="Breeze.WebApi" version="1.3.5" />
+      <dependency id="breeze.TypeScript.DefinitelyTyped" version="0.1.2" />
+      <dependency id="Breeze.WebApi" version="1.3.6" />
       <dependency id="Durandal" version="1.2.0" />
       <dependency id="Durandal.Router" version="1.2.0" />
       <dependency id="Durandal.Transitions" version="1.2.0" />
-      <dependency id="durandal.TypeScript.DefinitelyTyped" version="0.0.9" />
+      <dependency id="durandal.TypeScript.DefinitelyTyped" version="0.1.3" />
       <dependency id="FontAwesome" version="3.1.1" />
       <dependency id="jQuery" version="2.0.2" />
-      <dependency id="jquery.TypeScript.DefinitelyTyped" version="0.1.3" />
+      <dependency id="jquery.TypeScript.DefinitelyTyped" version="0.1.7" />
       <dependency id="Knockout.Mapping" version="2.4.0" />
-      <dependency id="knockout.mapping.TypeScript.DefinitelyTyped" version="0.0.3" />
-      <dependency id="knockout.TypeScript.DefinitelyTyped" version="0.1.6" />
+      <dependency id="knockout.mapping.TypeScript.DefinitelyTyped" version="0.0.5" />
+      <dependency id="knockout.TypeScript.DefinitelyTyped" version="0.2.2" />
       <dependency id="knockoutjs" version="2.2.1" />
-      <dependency id="Microsoft.AspNet.Providers" />
+      <dependency id="Microsoft.AspNet.Providers" version="1.2" />
       <dependency id="Microsoft.AspNet.Razor" version="2.0.30506.0" />
       <dependency id="Microsoft.AspNet.Web.Optimization" version="1.0.0" />
       <dependency id="Microsoft.AspNet.WebApi" version="4.0.30506.0" />
       <dependency id="Moment.js" version="2.0.0" />
-      <dependency id="moment.TypeScript.DefinitelyTyped" version="0.0.2" />
+      <dependency id="moment.TypeScript.DefinitelyTyped" version="0.0.4" />
       <dependency id="Q" version="0.9.6" />
-      <dependency id="q.TypeScript.DefinitelyTyped" version="0.0.9" />
+      <dependency id="q.TypeScript.DefinitelyTyped" version="0.1.2" />
       <dependency id="toastr" version="1.3.1" />
-      <dependency id="toastr.TypeScript.DefinitelyTyped" version="0.0.5" />
+      <dependency id="toastr.TypeScript.DefinitelyTyped" version="0.0.6" />
       <dependency id="Twitter.Bootstrap" version="2.3.2" />
       <dependency id="WebActivator" version="1.5.3" />
       <dependency id="WebGrease" version="1.3.0" />
@@ -75,8 +75,8 @@
     
     <file src="..\Spacify\Models\**.pp" target="content\Models" />
     
-    <file src="..\Spacify\Scripts\typings\breeze\breeze.knockout.d.ts" target="content\Scripts\typings\breeze\breeze.knockout.d.ts" />  
-    <file src="..\Spacify\Scripts\typings\q\Q.d.ts" target="content\Scripts\typings\q\Q.d.ts" />  
+    <file src="..\Spacify\Scripts\typings\breeze\breeze.d.ts" target="content\Scripts\typings\breeze\breeze.d.ts" />  
+    <file src="..\Spacify\Scripts\typings\q\Q.d.ts" target="content\Scripts\typings\q\Q.d.ts" />
   
     <file src="..\Spacify\Views\Mvc\**" target="content\Views\Mvc" />
   </files>

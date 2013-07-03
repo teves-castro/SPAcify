@@ -9,5 +9,9 @@ use the MigrateDatabaseToLatestVersion strategy that will use the added migratio
 
 These migrations are of course optional and can be safely removed if wanted.
 
+Although there is a dependency on breeze.d.ts typing file available from the DefinitelyTyped project nuget package, an altered version of this 
+file is inclued here to add support for generics. These customizations will be removed in a future version once they are integrated on the main
+DefinitelyTyped project.
+
 Enjoy!
 Vítor Castro
