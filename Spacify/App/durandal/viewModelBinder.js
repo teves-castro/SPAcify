@@ -65,10 +65,7 @@
                     obj.beforeBind(view);
                 }
 
-                if (obj.viewModel)
-                    ko.applyBindings(obj.viewModel, view);
-                else
-                    ko.applyBindings(obj, view);
+                ko.applyBindings(obj, view);
 
                 if (obj.afterBind) {
                     obj.afterBind(view);

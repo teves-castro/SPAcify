@@ -1,11 +1,13 @@
 ﻿
 using System.Web.Mvc;
+using System.Web.Routing;
 
 [assembly: WebActivator.PreApplicationStartMethod(
-    typeof(Spacify.App_Start.RouteConfig), "RegisterSpaPreStart", Order = 2)]
+    typeof(Spacify.RouteConfig), "RegisterSpaPreStart", Order = 2)]
 
-namespace Spacify.App_Start {
+namespace Spacify {
   public static class RouteConfig {
+    public static void RegisterRoutes(RouteCollection routes) {}
 
     public static void RegisterSpaPreStart() {
 

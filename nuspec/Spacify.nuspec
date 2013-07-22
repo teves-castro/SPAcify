@@ -17,7 +17,7 @@
     <releaseNotes>Small fixes and updates to latest package versions.</releaseNotes>
     <copyright>Copyright © 2013 Vítor Castro</copyright>
     <language>en-US</language>
-    <tags>typescript spa mvc asp.net jquery durandal knockout toastr breeze sammy q javascript moment temphire</tags>
+    <tags>spa typescript mvc asp.net jquery durandal knockout toastr breeze sammy q javascript moment temphire</tags>
     <dependencies>
       <dependency id="bootstrap.TypeScript.DefinitelyTyped" version="0.0.4" />
       <dependency id="breeze.TypeScript.DefinitelyTyped" version="0.1.2" />
@@ -26,6 +26,7 @@
       <dependency id="Durandal.Router" version="1.2.0" />
       <dependency id="Durandal.Transitions" version="1.2.0" />
       <dependency id="durandal.TypeScript.DefinitelyTyped" version="0.1.5" />
+      <dependency id="EntityFramework" version="5.0.0" />
       <dependency id="FontAwesome" version="3.2.1" />
       <dependency id="jQuery" version="2.0.3" />
       <dependency id="jquery.TypeScript.DefinitelyTyped" version="0.2.0" />
@@ -34,9 +35,9 @@
       <dependency id="knockout.TypeScript.DefinitelyTyped" version="0.2.4" />
       <dependency id="knockoutjs" version="2.3.0" />
       <dependency id="Microsoft.AspNet.Providers" version="1.2" />
-      <dependency id="Microsoft.AspNet.Razor" version="2.0.30506.0" />
+      <!--<dependency id="Microsoft.AspNet.Razor" version="2.0.30506.0" />-->
       <dependency id="Microsoft.AspNet.Web.Optimization" version="1.1.0" />
-      <dependency id="Microsoft.AspNet.WebApi" version="4.0.30506.0" />
+      <!--<dependency id="Microsoft.AspNet.WebApi" version="4.0.30506.0" />-->
       <dependency id="Moment.js" version="2.1.0" />
       <dependency id="moment.TypeScript.DefinitelyTyped" version="0.0.5" />
       <dependency id="Q" version="0.9.6" />
@@ -51,9 +52,7 @@
   <files>
     <file src="..\nuspec\install.ps1" target="tools\install.ps1" />
     <file src="..\nuspec\readme.txt" target="\readme.txt" />
-    
-    <file src="..\Spacify\App\durandal\viewModelBinder.js" target="content\App\durandal\viewModelBinder.js" />
-    
+
     <file src="..\Spacify\App\models\entities.tt.pp" target="content\App\models\entities.tt.pp" />
     <file src="..\Spacify\App\models\modelBuilder.ts" target="content\App\models\modelBuilder.ts" />
     <file src="..\Spacify\App\models\routeGroup.ts" target="content\App\models\routeGroup.ts" />
@@ -61,12 +60,12 @@
     <file src="..\Spacify\App\services\**.ts" target="content\App\services" />
 
     <file src="..\Spacify\App\viewmodels\**.ts" target="content\App\viewmodels" />
-    
+
     <file src="..\Spacify\App\views\**.html" target="content\App\views" />
-    
+
     <file src="..\Spacify\App\main.js" target="content\App\main.js" />
 
-    <file src="..\Spacify\App_Start\WebApiConfig.cs.pp" target="content\App_Start\WebApiConfig.cs.pp" />
+    <file src="..\Spacify\App_Start\BreezeWebApiConfig.cs.pp" target="content\App_Start\BreezeWebApiConfig.cs.pp" />
     <file src="..\Spacify\App_Start\BundleConfig.cs.pp" target="content\App_Start\BundleConfig.cs.pp" />
     <file src="..\Spacify\App_Start\RouteConfig.cs.pp" target="content\App_Start\RouteConfig.cs.pp" />
     <file src="..\Spacify\App_Start\SpaConfig.cs.pp" target="content\App_Start\SpaConfig.cs.pp" />
@@ -76,11 +75,11 @@
     <file src="..\Spacify\Controllers\**.pp" target="content\Controllers" />
 
     <file src="..\Spacify\Data\**.pp" target="content\Data" />
-    
+
     <file src="..\Spacify\Models\**.pp" target="content\Models" />
-    
-    <file src="..\Spacify\Scripts\typings\breeze\breeze.d.ts" target="content\Scripts\typings\breeze\breeze.d.ts" />  
-  
+
+    <file src="..\Spacify\Scripts\typings\breeze\breeze.d.ts" target="content\Scripts\typings\breeze\breeze.d.ts" />
+
     <file src="..\Spacify\Views\Mvc\**" target="content\Views\Mvc" />
   </files>
 </package>

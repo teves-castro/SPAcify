@@ -20,12 +20,14 @@ private void GenerateBundle(string rootNamespace)
 {
 #>
 using System.Web.Mvc;
+using System.Web.Routing;
 
 [assembly: WebActivator.PreApplicationStartMethod(
-    typeof(<#= rootNamespace #>.App_Start.RouteConfig), "RegisterSpaPreStart", Order = 2)]
+    typeof(<#= rootNamespace #>.RouteConfig), "RegisterSpaPreStart", Order = 2)]
 
-namespace <#= rootNamespace #>.App_Start {
+namespace <#= rootNamespace #> {
   public static class RouteConfig {
+    public static void RegisterRoutes(RouteCollection routes) {}
 
     public static void RegisterSpaPreStart() {
 
