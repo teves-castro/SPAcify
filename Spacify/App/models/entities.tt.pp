@@ -1,7 +1,7 @@
-﻿<#@ template debug = "false" hostspecific = "false" language = "C#v5" #>
-<#@ assembly name = "$(ProjectDir)bin\Cpi.eConciliation.dll" #>
+﻿<#@ template debug = "false" hostspecific = "false" language = "C#" #>
+<#@ assembly name = "$(ProjectDir)bin\$rootnamespace$.dll" #>
 <#@ assembly name = "System.Core.dll" #>
-<#@ import namespace = "Cpi.eConciliation.Models" #>
+<#@ import namespace = "$rootnamespace$.Models" #>
 <#@ import namespace = "System" #>
 <#@ import namespace = "System.Collections" #>
 <#@ import namespace = "System.Collections.Generic" #>

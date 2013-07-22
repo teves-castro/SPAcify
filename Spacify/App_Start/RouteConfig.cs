@@ -1,10 +1,11 @@
-﻿using System.Web.Mvc;
+﻿
+using System.Web.Mvc;
 
 [assembly: WebActivator.PreApplicationStartMethod(
-    typeof($rootnamespace$.App_Start.MvcRouteConfig), "RegisterSpaPreStart", Order = 2)]
+    typeof(Spacify.App_Start.RouteConfig), "RegisterSpaPreStart", Order = 2)]
 
-namespace $rootnamespace$.App_Start {
-  public static class MvcRouteConfig {
+namespace Spacify.App_Start {
+  public static class RouteConfig {
 
     public static void RegisterSpaPreStart() {
 
@@ -20,4 +21,7 @@ namespace $rootnamespace$.App_Start {
       );
     }
   }
-}
+}// Generated helper templates
+// Generated items
+// Spacify\App_Start\RouteConfig.cs.pp
+

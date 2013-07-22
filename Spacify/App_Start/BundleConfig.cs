@@ -1,4 +1,12 @@
 ﻿
+
+
+
+
+
+
+
+
 using System;
 using System.Web.Optimization;
 
@@ -13,6 +21,7 @@ namespace Spacify
 
             bundles.Add(
               new ScriptBundle("~/scripts/vendor")
+                .Include("~/scripts/modernizr.js")
                 .Include("~/scripts/jquery-{version}.js")
                 .Include("~/scripts/knockout-{version}.debug.js")
                 .Include("~/scripts/knockout.mapping-latest.debug.js")
@@ -54,5 +63,6 @@ namespace Spacify
 }
 // Generated helper templates
 // Generated items
-// Spacify\Spacify\App_Start\BundleConfig.cs.pp
+// Spacify\App_Start\BundleConfig.cs.pp
+
 

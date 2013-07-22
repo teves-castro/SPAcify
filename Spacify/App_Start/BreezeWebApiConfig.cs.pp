@@ -21,7 +21,7 @@ namespace $rootnamespace$.App_Start
                 );
 
             GlobalConfiguration.Configuration.Routes.MapHttpRoute(
-                name: "Default",
+                name: "WebApi",
                 routeTemplate: "breeze/{action}",
                 defaults: new {Controller = "Default"}
                 );

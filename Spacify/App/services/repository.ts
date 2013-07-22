@@ -115,7 +115,7 @@ export class Repository<T extends EntityBase> {
         });
     }
 
-    toBreezeP<R>(promise: JQueryPromise): breeze.Promise<R> {
+    toBreezeP<R>(promise: JQueryPromise<R>): breeze.Promise<R> {
         var deferred = Q.defer<R>();
         promise
             .then(result => {

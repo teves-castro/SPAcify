@@ -74,14 +74,16 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.13.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\net45\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\packages\Microsoft.Net.Http.2.1.10\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.13.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\net45\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Spatial, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -160,21 +162,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="App\services\repositories.ts" />
-    <Content Include="App\services\repositories.js">
-      <DependentUpon>repositories.ts</DependentUpon>
+    <Content Include="App_Start\RouteConfig.cs.pp">
+      <DependentUpon>RouteConfig.tt</DependentUpon>
     </Content>
     <Content Include="App_Start\BreezeWebApiConfig.cs.pp">
       <DependentUpon>BreezeWebApiConfig.tt</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.0.3.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.map" />
+    <TypeScriptCompile Include="App\services\repositories.ts" />
+    <Content Include="App\services\repositories.js">
+      <DependentUpon>repositories.ts</DependentUpon>
     </Content>
     <None Include="App_Start\BreezeWebApiConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BreezeWebApiConfig.cs</LastGenOutput>
     </None>
-    <Compile Include="App_Start\BreezeWebApiConfig.cs">
+    <Compile Include="App_Start\RouteConfig.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BreezeWebApiConfig.tt</DependentUpon>
+      <DependentUpon>RouteConfig.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs">
       <AutoGen>True</AutoGen>
@@ -186,18 +195,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpaConfig.tt</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\MvcRouteConfig.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MvcRouteConfig.tt</DependentUpon>
-    </Compile>
+    <Content Include="Content\font-awesome-ie7.css" />
+    <Content Include="Content\font-awesome-ie7.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Controllers\AccountController.cs.pp">
       <DependentUpon>AccountController.tt</DependentUpon>
     </Content>
+    <Content Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font\FontAwesome.otf" />
     <None Include="Controllers\AccountController.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AccountController.cs</LastGenOutput>
     </None>
+    <Compile Include="App_Start\BreezeWebApiConfig.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BreezeWebApiConfig.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -266,9 +284,6 @@
     <None Include="Scripts\breeze.intellisense.js" />
     <Content Include="Scripts\breeze.debug.js" />
     <Content Include="Scripts\breeze.min.js" />
-    <Content Include="Scripts\jquery-2.0.2.js" />
-    <Content Include="Scripts\jquery-2.0.2.min.js" />
-    <Content Include="Scripts\jquery-2.0.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\durandal\amd\almond-custom.js" />
@@ -367,9 +382,6 @@
     <Content Include="Controllers\MvcController.cs.pp">
       <DependentUpon>MvcController.tt</DependentUpon>
     </Content>
-    <Content Include="App_Start\MvcRouteConfig.cs.pp">
-      <DependentUpon>MvcRouteConfig.tt</DependentUpon>
-    </Content>
     <Content Include="App\models\routeGroup.js.map">
       <DependentUpon>routeGroup.ts</DependentUpon>
     </Content>
@@ -454,12 +466,17 @@
       <DependentUpon>Lookups.tt</DependentUpon>
     </Content>
     <Content Include="Content\toastr.min.css" />
+    <Content Include="Scripts\knockout-2.3.0.debug.js" />
+    <Content Include="Scripts\knockout-2.3.0.js" />
     <Content Include="Scripts\knockout.mapping-latest.debug.js" />
     <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\q.js" />
     <Content Include="Scripts\q.min.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <Content Include="Scripts\typings\breeze\breeze-1.0.d.ts" />
     <Content Include="Scripts\typings\breeze\breeze.d.ts" />
     <Content Include="Scripts\typings\durandal\durandal.d.ts" />
@@ -469,6 +486,7 @@
     <Content Include="Scripts\typings\knockout\knockout.d.ts" />
     <Content Include="Scripts\typings\moment\moment.d.ts" />
     <Content Include="Scripts\typings\q\Q.d.ts" />
+    <Content Include="Scripts\typings\sammyjs\sammyjs.d.ts" />
     <Content Include="Scripts\typings\toastr\toastr.d.ts" />
     <Content Include="T4\TemplateFileManager.ttinclude" />
     <TypeScriptCompile Include="App\services\logger.ts" />
@@ -514,20 +532,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\durandal.css" />
-    <Content Include="Content\font-awesome-ie7.css" />
-    <Content Include="Content\font-awesome-ie7.min.css" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\ie10mobile.css" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\icon.png" />
     <Content Include="Global.asax" />
-    <Content Include="Content\font\fontawesome-webfont.woff" />
-    <Content Include="Content\font\fontawesome-webfont.ttf" />
-    <Content Include="Content\font\fontawesome-webfont.eot" />
-    <Content Include="Content\font\FontAwesome.otf" />
     <Content Include="App\viewmodels\shell.js.map">
       <DependentUpon>shell.ts</DependentUpon>
     </Content>
@@ -572,21 +581,15 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>entities.d.ts</LastGenOutput>
     </Content>
-    <Content Include="App_Start\MvcRouteConfig.tt">
+    <Content Include="App_Start\RouteConfig.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MvcRouteConfig.cs</LastGenOutput>
+      <LastGenOutput>RouteConfig.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\knockout-2.2.1.debug.js" />
-    <Content Include="Scripts\knockout-2.2.1.js" />
-    <Content Include="Scripts\moment.js" />
-    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\sammy-0.7.4.js" />
     <Content Include="Scripts\sammy-0.7.4.min.js" />
-    <Content Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\breeze\breeze.knockout.d.ts" />
-    <Content Include="Scripts\typings\sammyjs\sammyjs.d.ts" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

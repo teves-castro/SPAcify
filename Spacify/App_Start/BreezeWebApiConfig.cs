@@ -22,7 +22,7 @@ namespace Spacify.App_Start
                 );
 
             GlobalConfiguration.Configuration.Routes.MapHttpRoute(
-                name: "Default",
+                name: "WebApi",
                 routeTemplate: "breeze/{action}",
                 defaults: new {Controller = "Default"}
                 );
@@ -31,5 +31,5 @@ namespace Spacify.App_Start
 }
 // Generated helper templates
 // Generated items
-// Spacify\Spacify\App_Start\BreezeWebApiConfig.cs.pp
+// Spacify\App_Start\BreezeWebApiConfig.cs.pp
 

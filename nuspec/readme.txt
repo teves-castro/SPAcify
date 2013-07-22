@@ -13,5 +13,8 @@ Although there is a dependency on breeze.d.ts typing file available from the Def
 file is inclued here to add support for generics. These customizations will be removed in a future version once they are integrated on the main
 DefinitelyTyped project.
 
+//TODO: Explain how to include typescript build targets to project
+
+
 Enjoy!
 Vítor Castro

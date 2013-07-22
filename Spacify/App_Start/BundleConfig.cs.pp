@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Web.Optimization;
 
 namespace $rootnamespace$
@@ -12,6 +13,7 @@ namespace $rootnamespace$
 
             bundles.Add(
               new ScriptBundle("~/scripts/vendor")
+                .Include("~/scripts/modernizr.js")
                 .Include("~/scripts/jquery-{version}.js")
                 .Include("~/scripts/knockout-{version}.debug.js")
                 .Include("~/scripts/knockout.mapping-latest.debug.js")

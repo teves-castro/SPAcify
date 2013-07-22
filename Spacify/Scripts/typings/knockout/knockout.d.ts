@@ -1,4 +1,4 @@
-// Type definitions for Knockout 2.2
+// Type definitions for Knockout 2.3
 // Project: http://knockoutjs.com
 // Definitions by: Boris Yankov <https://github.com/borisyankov/>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
@@ -27,9 +27,9 @@ interface KnockoutObservableArrayFunctions<T> extends KnockoutObservableFunction
     slice(start: number, end?: number): T[];
     splice(start: number): T[];
     splice(start: number, deleteCount: number, ...items: T[]): T[];
-    pop();
+    pop(): T;
     push(...items: T[]): void;
-    shift();
+    shift(): T;
     unshift(...items: T[]): number;
     reverse(): T[];
     sort(): void;
@@ -256,6 +256,8 @@ interface KnockoutUtils {
     arrayFilter(array: any[], predicate: (item) => boolean): any[];
 
     arrayPushAll(array: any[], valuesToPush: any[]): any[];
+    
+    arrayPushAll(array: KnockoutObservableArray<any>, valuesToPush: any[]): any[];
 
     extend(target, source);
 
