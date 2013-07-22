@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       Starter kit for building a SPA with ASP.NET MVC, TypeScript, Knockout, Durandal, and Breeze.
-      To use start by creating an empty web application and then apply this nuget package using:
+      To use start by creating an empty MVC4 application and then apply this nuget package using:
       Install-Package SPAcify
     </description>
     <summary>Starter kit for building a SPA with ASP.NET MVC, TypeScript, Knockout, Durandal, and Breeze.</summary>
